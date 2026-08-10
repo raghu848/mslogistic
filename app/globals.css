@@ -478,8 +478,7 @@ img {
   flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
-  padding-top: 140px !important;
-  padding-bottom: 80px !important;
+  padding: 80px 24px 40px 24px !important;
   position: relative !important;
   overflow: hidden !important;
 }
@@ -1872,9 +1871,9 @@ body {
   }
 
   .ms-hero {
-    padding-top: 110px;
-    padding-bottom: 60px;
-    min-height: auto;
+    padding-top: 100px !important;
+    padding-bottom: 50px !important;
+    min-height: 100vh !important;
   }
 
   .ms-hero-headline {

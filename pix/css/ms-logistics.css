@@ -471,8 +471,7 @@ img {
   flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
-  padding-top: 140px !important;
-  padding-bottom: 80px !important;
+  padding: 80px 24px 40px 24px !important;
   position: relative !important;
   overflow: hidden !important;
 }
