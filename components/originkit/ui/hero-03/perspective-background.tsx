@@ -37,8 +37,8 @@ export const PerspectiveBackground = () => {
         images={TUNNEL_IMAGES}
         style={{ width: "100%", height: "100%", position: "absolute", top: 0, left: 0 }}
       />
-      {/* Soft center veil overlay */}
-      <div className="pointer-events-none absolute inset-0 z-1 bg-[radial-gradient(circle_at_center,rgba(11,18,33,0.12)_0%,rgba(6,11,22,0.65)_100%)]" />
+      {/* Soft center veil overlay with warm cream ambient light halo */}
+      <div className="pointer-events-none absolute inset-0 z-1 bg-[radial-gradient(circle_at_center,rgba(255,251,225,0.15)_0%,rgba(11,18,33,0.35)_45%,rgba(6,11,22,0.85)_100%)]" />
     </div>
   );
 };
