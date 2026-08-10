@@ -126,43 +126,45 @@ export default function HomePage() {
       <section className="ms-hero" id="hero">
         <PerspectiveBackground />
         <div className="ms-container ms-hero-grid">
-          <div className="ms-hero-content">
-            <div className="ms-badge">
-              <i className="fa-solid fa-earth-americas"></i> FAST • SAFE • EVERYWHERE
-            </div>
-            <h1 className="ms-hero-headline">
-              WE MOVE YOUR <br />
-              <span>BUSINESS</span> <span className="highlight-orange">FORWARD.</span>
-            </h1>
-            <p className="ms-hero-subtext">
-              Smart, reliable and seamless logistics solutions connecting your cargo to the world with precision and on-time guaranteed delivery.
-            </p>
+          <div className="ms-hero-card">
+            <div className="ms-hero-content">
+              <div className="ms-badge">
+                <i className="fa-solid fa-earth-americas"></i> FAST • SAFE • EVERYWHERE
+              </div>
+              <h1 className="ms-hero-headline">
+                WE MOVE YOUR <br />
+                <span>BUSINESS</span> <span className="highlight-orange">FORWARD.</span>
+              </h1>
+              <p className="ms-hero-subtext">
+                Smart, reliable and seamless logistics solutions connecting your cargo to the world with precision and on-time guaranteed delivery.
+              </p>
 
-            <div className="ms-hero-btns">
-              <a href="#quote" className="ms-btn ms-btn-orange" id="heroQuoteBtn">
-                <span>GET A QUOTE</span>
-                <i className="fa-solid fa-paper-plane"></i>
-              </a>
-              <a href="#services" className="ms-btn ms-btn-outline" id="heroExploreBtn">
-                <span>EXPLORE SERVICES</span>
-                <i className="fa-solid fa-arrow-down-long"></i>
-              </a>
-            </div>
+              <div className="ms-hero-btns">
+                <a href="#quote" className="ms-btn ms-btn-orange" id="heroQuoteBtn">
+                  <span>GET A QUOTE</span>
+                  <i className="fa-solid fa-paper-plane"></i>
+                </a>
+                <a href="#services" className="ms-btn ms-btn-outline" id="heroExploreBtn">
+                  <span>EXPLORE SERVICES</span>
+                  <i className="fa-solid fa-arrow-down-long"></i>
+                </a>
+              </div>
 
-            {/* Track Shipment Bar */}
-            <form onSubmit={handleTrackSubmit} className="ms-hero-track-bar">
-              <i className="fa-solid fa-magnifying-glass-location" style={{ color: 'var(--vibrant-orange)', fontSize: '1.2rem' }}></i>
-              <input
-                type="text"
-                className="ms-hero-track-input"
-                placeholder="Enter Tracking Number (e.g. MS-884920)..."
-                value={trackInput}
-                onChange={(e) => setTrackInput(e.target.value)}
-              />
-              <button type="submit" className="ms-btn ms-btn-blue ms-btn-track" style={{ padding: '10px 20px', fontSize: '0.85rem' }}>
-                <span>TRACK SHIPMENT</span>
-              </button>
-            </form>
+              {/* Track Shipment Bar */}
+              <form onSubmit={handleTrackSubmit} className="ms-hero-track-bar">
+                <i className="fa-solid fa-magnifying-glass-location" style={{ color: 'var(--vibrant-orange)', fontSize: '1.2rem' }}></i>
+                <input
+                  type="text"
+                  className="ms-hero-track-input"
+                  placeholder="Enter Tracking Number (e.g. MS-884920)..."
+                  value={trackInput}
+                  onChange={(e) => setTrackInput(e.target.value)}
+                />
+                <button type="submit" className="ms-btn ms-btn-blue ms-btn-track" style={{ padding: '10px 20px', fontSize: '0.85rem' }}>
+                  <span>TRACK SHIPMENT</span>
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </section>
