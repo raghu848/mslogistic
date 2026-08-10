@@ -11,49 +11,51 @@
   --navy-surface: #10192D;
   --navy-card: #152238;
   --navy-light: #1E2E4A;
-  
+
   --electric-blue: #2563EB;
   --electric-blue-hover: #1D4ED8;
   --electric-blue-glow: rgba(37, 99, 235, 0.35);
-  
+
   --vibrant-orange: #FF5722;
   --vibrant-orange-hover: #F4511E;
   --vibrant-orange-glow: rgba(255, 87, 34, 0.4);
-  
+
   --bg-light: #F8FAFC;
   --bg-white: #FFFFFF;
   --bg-card-light: #FFFFFF;
-  
+
   --text-dark: #0F172A;
   --text-medium: #475569;
   --text-muted: #64748B;
   --text-light: #94A3B8;
   --text-white: #FFFFFF;
-  
+
   --border-dark: rgba(255, 255, 255, 0.08);
   --border-dark-hover: rgba(255, 87, 34, 0.3);
   --border-light: #E2E8F0;
-  
+
   --font-heading: 'Plus Jakarta Sans', sans-serif;
   --font-body: 'Inter', sans-serif;
-  
+
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 20px;
   --radius-full: 9999px;
-  
+
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
   --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.15);
   --shadow-orange: 0 10px 25px rgba(255, 87, 34, 0.3);
-  
+
   --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-smooth: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Reset & Base Styles */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -73,7 +75,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   color: var(--text-dark);
   font-weight: 700;
@@ -655,8 +662,13 @@ img {
 }
 
 @keyframes slowRotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .ms-route-svg {
@@ -673,7 +685,9 @@ img {
 }
 
 @keyframes dashMove {
-  to { stroke-dashoffset: -200; }
+  to {
+    stroke-dashoffset: -200;
+  }
 }
 
 .ms-floating-card {
@@ -703,8 +717,13 @@ img {
 }
 
 @keyframes floatAnim {
-  0% { transform: translateY(0px); }
-  100% { transform: translateY(-12px); }
+  0% {
+    transform: translateY(0px);
+  }
+
+  100% {
+    transform: translateY(-12px);
+  }
 }
 
 .ms-floating-icon {
@@ -1126,16 +1145,46 @@ img {
 }
 
 @keyframes nodePulse {
-  0% { transform: scale(0.6); opacity: 1; }
-  100% { transform: scale(2.4); opacity: 0; }
+  0% {
+    transform: scale(0.6);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
 }
 
-.ms-node-india { top: 48%; left: 71%; }
-.ms-node-middleeast { top: 43%; left: 61%; }
-.ms-node-europe { top: 30%; left: 51%; }
-.ms-node-northamerica { top: 34%; left: 24%; }
-.ms-node-asia { top: 46%; left: 85%; }
-.ms-node-africa { top: 58%; left: 53%; }
+.ms-node-india {
+  top: 48%;
+  left: 71%;
+}
+
+.ms-node-middleeast {
+  top: 43%;
+  left: 61%;
+}
+
+.ms-node-europe {
+  top: 30%;
+  left: 51%;
+}
+
+.ms-node-northamerica {
+  top: 34%;
+  left: 24%;
+}
+
+.ms-node-asia {
+  top: 46%;
+  left: 85%;
+}
+
+.ms-node-africa {
+  top: 58%;
+  left: 53%;
+}
 
 .ms-node-label {
   position: absolute;
@@ -1687,7 +1736,8 @@ img {
 /* ==========================================================================
    14. RESPONSIVE BREAKPOINTS & MOBILE OPTIMIZATION
    ========================================================================== */
-html, body {
+html,
+body {
   overflow-x: hidden !important;
   width: 100%;
 }
@@ -1696,7 +1746,7 @@ html, body {
   .ms-navbar {
     top: 10px;
   }
-  
+
   .ms-nav-menu {
     gap: 16px;
   }
@@ -1707,26 +1757,26 @@ html, body {
     grid-template-columns: 1fr;
     gap: 40px;
   }
-  
+
   .ms-services-grid,
   .ms-why-grid,
   .ms-industries-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .ms-process-timeline {
     grid-template-columns: 1fr;
     gap: 30px;
   }
-  
+
   .ms-process-line {
     display: none;
   }
-  
+
   .ms-footer-grid {
     grid-template-columns: 1fr 1fr;
   }
-  
+
   .ms-hero-headline {
     font-size: 2.8rem;
   }
@@ -1742,7 +1792,7 @@ html, body {
   .ms-section {
     padding: 60px 0;
   }
-  
+
   .ms-container {
     padding: 0 16px;
   }
@@ -1750,11 +1800,11 @@ html, body {
   .ms-desktop-video {
     display: none !important;
   }
-  
+
   .ms-mobile-video {
     display: block !important;
   }
-  
+
   .ms-map-visual {
     height: 400px;
   }
@@ -1778,31 +1828,31 @@ html, body {
   .ms-nav-menu {
     display: none;
   }
-  
+
   .ms-mobile-toggle {
     display: block;
   }
-  
+
   .ms-btn-minimal-track {
     display: none;
   }
-  
+
   .ms-stats-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
-  
+
   .ms-stat-item:not(:last-child)::after {
     display: none;
   }
-  
+
   .ms-services-grid,
   .ms-why-grid,
   .ms-industries-grid,
   .ms-testimonials-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .ms-hero {
     padding-top: 110px;
     padding-bottom: 60px;
@@ -1838,11 +1888,11 @@ html, body {
     width: 100%;
     justify-content: center;
   }
-  
+
   .ms-tracking-form {
     flex-direction: column;
   }
-  
+
   .ms-footer-grid {
     grid-template-columns: 1fr;
     gap: 32px;
@@ -1853,7 +1903,7 @@ html, body {
     gap: 16px;
     text-align: center;
   }
-  
+
   .ms-section-title {
     font-size: 1.8rem;
   }
