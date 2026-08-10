@@ -460,12 +460,12 @@ img {
 }
 
 /* ==========================================================================
-   2. HERO SECTION
+   2. HERO SECTION (Cream Perspective Theme Inspired by Screenshot)
    ========================================================================== */
 .ms-hero {
   min-height: 100vh;
-  background-color: var(--navy-dark);
-  color: var(--text-white);
+  background-color: #fffbe1 !important;
+  color: #1d1d1d !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -497,8 +497,13 @@ img {
 
 .ms-hero-veil {
   position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 50% 50%, rgba(255, 251, 225, 0.25) 0%, rgba(6, 11, 22, 0.75) 75%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 400px;
+  background: #fffbe1;
+  filter: blur(50px);
   pointer-events: none;
   z-index: 1;
 }
@@ -537,75 +542,87 @@ img {
   margin: 0 auto;
 }
 
-/* Content Highlight Card (Inspired by Image 2 Light Cream Palette & Glow) */
-.ms-hero-highlight-card {
-  padding: 44px 54px;
-  border-radius: 36px;
-  background: rgba(255, 251, 225, 0.94);
-  backdrop-filter: blur(32px) saturate(200%);
-  -webkit-backdrop-filter: blur(32px) saturate(200%);
-  border: 1.5px solid rgba(255, 255, 255, 0.85);
-  box-shadow: 
-    0 35px 85px rgba(0, 0, 0, 0.5),
-    0 0 65px rgba(255, 251, 225, 0.85),
-    inset 0 1px 1px #FFFFFF;
-  transition: all 0.4s ease;
-  color: #1D1D1D;
-}
-
-.ms-badge-highlight {
-  background: rgba(255, 87, 34, 0.12) !important;
-  color: #FF5722 !important;
-  border: 1px solid rgba(255, 87, 34, 0.35) !important;
-  box-shadow: 0 4px 15px rgba(255, 87, 34, 0.18);
-  font-weight: 700 !important;
-  text-shadow: none !important;
-}
-
-.ms-hero-highlight-card .ms-hero-headline {
-  font-size: 3.6rem;
+.ms-hero-headline {
+  font-size: 3.8rem;
   font-weight: 800;
-  color: #1D1D1D !important;
+  color: #1d1d1d !important;
   line-height: 1.1;
   letter-spacing: -0.03em;
-  margin-bottom: 20px;
-  filter: none !important;
+  margin-bottom: 24px;
 }
 
-.ms-hero-highlight-card .ms-hero-headline span {
+.ms-hero-headline span {
+  color: #1d1d1d !important;
   background: none !important;
-  -webkit-background-clip: initial !important;
-  -webkit-text-fill-color: #1D1D1D !important;
-  color: #1D1D1D !important;
+  -webkit-text-fill-color: #1d1d1d !important;
 }
 
-.ms-hero-highlight-card .ms-hero-headline .highlight-orange {
+.ms-hero-headline .highlight-orange {
+  color: #FF5722 !important;
   background: linear-gradient(135deg, #FF5722 0%, #F4511E 100%) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
-  color: #FF5722 !important;
 }
 
-.ms-hero-highlight-card .ms-hero-subtext {
+.ms-hero-subtext {
   font-size: 1.2rem;
-  color: #334155 !important;
-  margin-bottom: 36px;
-  max-width: 580px;
-  font-weight: 500;
+  color: rgba(29, 29, 29, 0.75) !important;
+  margin-bottom: 40px;
+  max-width: 540px;
   line-height: 1.6;
-  text-shadow: none !important;
+  font-weight: 500;
 }
 
-.ms-hero-highlight-card .ms-btn-outline {
-  border-color: rgba(15, 23, 42, 0.35);
-  color: #0F172A;
-  background: rgba(255, 255, 255, 0.7);
+.ms-hero-btns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 40px;
 }
 
-.ms-hero-highlight-card .ms-btn-outline:hover {
-  border-color: var(--vibrant-orange);
-  color: var(--vibrant-orange);
-  background: rgba(255, 87, 34, 0.08);
+.ms-hero .ms-btn-outline {
+  background: rgba(255, 251, 225, 0.6) !important;
+  color: #1d1d1d !important;
+  border: 1.5px solid rgba(29, 29, 29, 0.25) !important;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+}
+
+.ms-hero .ms-btn-outline:hover {
+  border-color: #FF5722 !important;
+  color: #FF5722 !important;
+  background: rgba(255, 87, 34, 0.08) !important;
+}
+
+/* Track Shipment Bar on Light Cream Background */
+.ms-hero-track-bar {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid rgba(214, 207, 179, 0.9) !important;
+  backdrop-filter: blur(16px);
+  padding: 10px 10px 10px 20px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 580px;
+  margin: 0 auto;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+}
+
+.ms-hero-track-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #1d1d1d !important;
+  font-size: 0.95rem;
+  flex: 1;
+  width: 100%;
+}
+
+.ms-hero-track-input::placeholder {
+  color: rgba(29, 29, 29, 0.45) !important;
 }
 
 .ms-hero-subtext {

@@ -126,8 +126,8 @@ export default function HomePage() {
       <section className="ms-hero" id="hero">
         <PerspectiveBackground />
         <div className="ms-container ms-hero-grid">
-          <div className="ms-hero-content ms-hero-highlight-card">
-            <div className="ms-badge ms-badge-highlight">
+          <div className="ms-hero-content">
+            <div className="ms-badge">
               <i className="fa-solid fa-earth-americas"></i> FAST • SAFE • EVERYWHERE
             </div>
             <h1 className="ms-hero-headline">
