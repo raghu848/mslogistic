@@ -1,7 +1,12 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { PerspectiveBackground } from '@/components/originkit/ui/hero-03/perspective-background';
+import dynamic from 'next/dynamic';
+
+const PerspectiveBackground = dynamic(
+  () => import('@/components/originkit/ui/hero-03/perspective-background').then((mod) => mod.PerspectiveBackground),
+  { ssr: false }
+);
 
 export default function HomePage() {
   const [scrolled, setScrolled] = useState(false);

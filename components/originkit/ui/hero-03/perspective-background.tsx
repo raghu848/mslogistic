@@ -23,7 +23,7 @@ export const PerspectiveBackground = () => {
   const { tunnelSize, fade, boost } = useTunnelConfig();
 
   return (
-    <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
+    <div aria-hidden="true" className="absolute top-0 left-0 w-full h-full z-0 flex items-center justify-center overflow-hidden pointer-events-none">
       <GalleryTunnel
         background="#060B16"
         lineColor="#2563EB"
@@ -35,10 +35,10 @@ export const PerspectiveBackground = () => {
         fade={fade}
         label={false}
         images={TUNNEL_IMAGES}
-        style={{ width: "100%", height: "100%" }}
+        style={{ width: "100%", height: "100%", position: "absolute", top: 0, left: 0 }}
       />
       {/* Soft center veil overlay */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(11,18,33,0.12)_0%,rgba(6,11,22,0.6)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 z-1 bg-[radial-gradient(circle_at_center,rgba(11,18,33,0.12)_0%,rgba(6,11,22,0.65)_100%)]" />
     </div>
   );
 };
