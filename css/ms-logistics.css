@@ -464,7 +464,8 @@ img {
    ========================================================================== */
 .ms-hero {
   min-height: 100vh;
-  background-color: var(--navy-dark);
+  background-color: #FFFBE1;
+  color: #1D1D1D;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -497,7 +498,7 @@ img {
 .ms-hero-veil {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(11, 18, 33, 0.12) 0%, rgba(6, 11, 22, 0.65) 100%);
+  background: radial-gradient(ellipse at 50% 50%, rgba(255, 251, 225, 0.88) 0%, rgba(255, 251, 225, 0.45) 50%, transparent 80%);
   pointer-events: none;
   z-index: 1;
 }
@@ -536,45 +537,45 @@ img {
   margin: 0 auto;
 }
 
-/* Content Highlight Card (Inspired by Image 2 Palette & Glow) */
+/* Content Highlight Card (Inspired by Image 2 Light Cream Palette & Glow) */
 .ms-hero-highlight-card {
-  padding: 44px 52px;
+  padding: 40px 48px;
   border-radius: 32px;
-  background: rgba(11, 18, 33, 0.72);
+  background: rgba(255, 251, 225, 0.82);
   backdrop-filter: blur(28px) saturate(180%);
   -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border: 1px solid rgba(255, 251, 225, 0.22);
+  border: 1px solid rgba(215, 207, 164, 0.6);
   box-shadow: 
-    0 30px 70px rgba(0, 0, 0, 0.7),
-    0 0 50px rgba(255, 87, 34, 0.15),
-    inset 0 1px 1px rgba(255, 251, 225, 0.35);
+    0 25px 60px rgba(0, 0, 0, 0.08),
+    0 0 45px rgba(255, 251, 225, 0.95),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9);
   transition: all 0.4s ease;
 }
 
 .ms-badge-highlight {
-  background: rgba(255, 251, 225, 0.15) !important;
-  color: #FF8A65 !important;
-  border: 1px solid rgba(255, 251, 225, 0.35) !important;
-  box-shadow: 0 4px 18px rgba(255, 87, 34, 0.25);
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  background: rgba(255, 87, 34, 0.12) !important;
+  color: #FF5722 !important;
+  border: 1px solid rgba(255, 87, 34, 0.3) !important;
+  box-shadow: 0 4px 15px rgba(255, 87, 34, 0.15);
+  text-shadow: none;
 }
 
 .ms-hero-headline {
   font-size: 3.6rem;
   font-weight: 800;
-  color: var(--text-white);
+  color: #1D1D1D;
   line-height: 1.1;
   letter-spacing: -0.03em;
   margin-bottom: 24px;
-  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.95));
+  filter: none;
 }
 
 .ms-hero-subtext {
   font-size: 1.25rem;
-  color: rgba(255, 255, 255, 0.92);
+  color: rgba(29, 29, 29, 0.8);
   margin-bottom: 40px;
   max-width: 580px;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+  text-shadow: none;
 }
 
 .ms-hero-headline span {
