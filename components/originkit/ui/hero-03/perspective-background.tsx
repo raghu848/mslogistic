@@ -23,7 +23,7 @@ export const PerspectiveBackground = () => {
   const { tunnelSize, fade, boost } = useTunnelConfig();
 
   return (
-    <div aria-hidden="true" className="absolute top-0 left-0 w-full h-full z-0 flex items-center justify-center overflow-hidden pointer-events-none">
+    <div aria-hidden="true" className="absolute inset-0 w-full h-full z-0 flex items-center justify-center overflow-hidden pointer-events-none">
       <GalleryTunnel
         background="#fffbe1"
         lineColor="#d6cfb3"
@@ -35,7 +35,7 @@ export const PerspectiveBackground = () => {
         fade={fade}
         label={false}
         images={TUNNEL_IMAGES}
-        style={{ width: "100%", height: "100%", position: "absolute", top: 0, left: 0 }}
+        style={{ width: "100%", height: "100%", position: "absolute", top: 0, left: 0, right: 0, bottom: 0 }}
       />
       {/* Soft cream veil halo from screenshot so tunnel images don't fight text */}
       <div
