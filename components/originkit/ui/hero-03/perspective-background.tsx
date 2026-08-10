@@ -25,9 +25,9 @@ export const PerspectiveBackground = () => {
   return (
     <div aria-hidden="true" className="absolute inset-0 w-full h-full z-0 flex items-center justify-center overflow-hidden pointer-events-none">
       <GalleryTunnel
-        background="#fffbe1"
-        lineColor="#d6cfb3"
-        lineOpacity={65}
+        background="#060B16"
+        lineColor="#2563EB"
+        lineOpacity={55}
         grid={5}
         tunnelSize={tunnelSize}
         speed={reduceMotion ? 0 : 3}
@@ -37,10 +37,10 @@ export const PerspectiveBackground = () => {
         images={TUNNEL_IMAGES}
         style={{ width: "100%", height: "100%", position: "absolute", top: 0, left: 0, right: 0, bottom: 0 }}
       />
-      {/* Soft cream veil halo from screenshot so tunnel images don't fight text */}
+      {/* Dark radial glow veil overlay matching localhost:3000 */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute top-1/2 left-1/2 h-[340px] w-[400px] -translate-x-1/2 -translate-y-1/2 bg-[#fffbe1] blur-[42px] ipad:h-[500px] ipad:w-[600px] ipad:blur-[60px] desktop-sm:h-[420px] desktop-sm:w-[500px] desktop-sm:blur-[48px] z-1"
+        className="pointer-events-none absolute inset-0 z-1 bg-[radial-gradient(circle_at_center,rgba(11,18,33,0.15)_0%,rgba(6,11,22,0.65)_100%)]"
       />
     </div>
   );

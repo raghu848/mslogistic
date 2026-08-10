@@ -460,13 +460,13 @@ img {
 }
 
 /* ==========================================================================
-   2. HERO SECTION (Cream Perspective Theme Inspired by Screenshot)
+   2. HERO SECTION (Dark B2B Logistics Theme — Matching Localhost 100%)
    ========================================================================== */
 .ms-hero {
   min-height: 100vh !important;
   width: 100% !important;
-  background-color: #fffbe1 !important;
-  color: #1d1d1d !important;
+  background-color: var(--navy-dark) !important;
+  color: var(--text-white) !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
@@ -504,13 +504,8 @@ img {
 
 .ms-hero-veil {
   position: absolute !important;
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(-50%, -50%) !important;
-  width: 550px !important;
-  height: 450px !important;
-  background: #fffbe1 !important;
-  filter: blur(60px) !important;
+  inset: 0 !important;
+  background: radial-gradient(circle at 50% 50%, rgba(11, 18, 33, 0.15) 0%, rgba(6, 11, 22, 0.65) 100%) !important;
   pointer-events: none !important;
   z-index: 1 !important;
 }
@@ -549,35 +544,51 @@ img {
   margin: 0 auto !important;
 }
 
+.ms-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: rgba(255, 87, 34, 0.1) !important;
+  color: var(--vibrant-orange) !important;
+  border: 1px solid rgba(255, 87, 34, 0.25) !important;
+  margin-bottom: 16px;
+}
+
 .ms-hero-headline {
-  font-size: 3.8rem;
+  font-size: 3.5rem;
   font-weight: 800;
-  color: #1d1d1d !important;
+  color: var(--text-white) !important;
   line-height: 1.1;
   letter-spacing: -0.03em;
   margin-bottom: 24px;
 }
 
 .ms-hero-headline span {
-  color: #1d1d1d !important;
-  background: none !important;
-  -webkit-text-fill-color: #1d1d1d !important;
+  background: linear-gradient(135deg, #FFFFFF 0%, rgba(255, 255, 255, 0.7) 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: #FFFFFF !important;
 }
 
 .ms-hero-headline .highlight-orange {
-  color: #FF5722 !important;
-  background: linear-gradient(135deg, #FF5722 0%, #F4511E 100%) !important;
+  background: linear-gradient(135deg, var(--vibrant-orange) 0%, #FF8A65 100%) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
 }
 
 .ms-hero-subtext {
   font-size: 1.2rem;
-  color: rgba(29, 29, 29, 0.75) !important;
+  color: rgba(255, 255, 255, 0.75) !important;
   margin-bottom: 40px;
   max-width: 540px;
   line-height: 1.6;
-  font-weight: 500;
 }
 
 .ms-hero-btns {
@@ -589,47 +600,47 @@ img {
 }
 
 .ms-hero .ms-btn-outline {
-  background: rgba(255, 251, 225, 0.6) !important;
-  color: #1d1d1d !important;
-  border: 1.5px solid rgba(29, 29, 29, 0.25) !important;
+  background: transparent !important;
+  color: var(--text-white) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
   border-radius: var(--radius-md);
   font-weight: 600;
 }
 
 .ms-hero .ms-btn-outline:hover {
-  border-color: #FF5722 !important;
-  color: #FF5722 !important;
-  background: rgba(255, 87, 34, 0.08) !important;
+  border-color: var(--vibrant-orange) !important;
+  color: var(--vibrant-orange) !important;
+  background: rgba(255, 87, 34, 0.05) !important;
 }
 
-/* Track Shipment Bar on Light Cream Background */
+/* Inline Track Bar Matching Localhost 100% */
 .ms-hero-track-bar {
-  background: rgba(255, 255, 255, 0.9) !important;
-  border: 1px solid rgba(214, 207, 179, 0.9) !important;
-  backdrop-filter: blur(16px);
-  padding: 10px 10px 10px 20px;
+  background: rgba(19, 29, 49, 0.85) !important;
+  border: 1px solid var(--border-dark) !important;
+  backdrop-filter: blur(12px);
+  padding: 12px 12px 12px 20px;
   border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
   gap: 12px;
   width: 100%;
-  max-width: 580px;
+  max-width: 600px;
   margin: 0 auto;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 }
 
 .ms-hero-track-input {
   background: transparent;
   border: none;
   outline: none;
-  color: #1d1d1d !important;
+  color: var(--text-white) !important;
   font-size: 0.95rem;
   flex: 1;
   width: 100%;
 }
 
 .ms-hero-track-input::placeholder {
-  color: rgba(29, 29, 29, 0.45) !important;
+  color: rgba(255, 255, 255, 0.4) !important;
 }
 
 .ms-hero-subtext {
