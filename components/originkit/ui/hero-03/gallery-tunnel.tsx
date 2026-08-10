@@ -44,21 +44,23 @@ interface ImageBoxImage {
 }
 
 interface ImageBoxProps {
-    images: ImageBoxImage[];
-    colors: string[];
-    background: string;
-    lineColor: string;
-    lineOpacity: number;
-    grid: number;
-    speed: number;
-    boost: number;
-    fade: number;
-    label: boolean;
-    labelText: string;
-    labelFill: string;
-    labelColor: string;
-    labelFont: CSSProperties;
+    images?: (ImageBoxImage | string)[];
+    colors?: string[];
+    background?: string;
+    lineColor?: string;
+    lineOpacity?: number;
+    grid?: number;
+    speed?: number;
+    boost?: number;
+    fade?: number;
+    tunnelSize?: number;
+    label?: boolean;
+    labelText?: string;
+    labelFill?: string;
+    labelColor?: string;
+    labelFont?: CSSProperties;
     style?: CSSProperties;
+    className?: string;
 }
 
 const srcOf = (image: any): string =>
