@@ -5,29 +5,37 @@
 
 ## Just installed
 
-- Components: hero-03, hero-03
+- Components: hero-23
 - Files directory: `components/originkit/`
 - Import alias root: `@/components/originkit`
 
 ### Files written
 
-- `components/originkit/hero-03.tsx`
-- `components/originkit/ui/hero-03/gallery-tunnel.tsx`
-- `components/originkit/ui/hero-03/section-12-hero.tsx`
-- `components/originkit/ui/hero-03/gallery-overlay.tsx`
-- `components/originkit/ui/hero-03/hero-content.tsx`
-- `components/originkit/ui/hero-03/navbar.tsx`
-- `components/originkit/ui/hero-03/perspective-background.tsx`
-- `components/originkit/ui/hero-03/use-tunnel-size.tsx`
-- `components/originkit/ui/hero-03/button.tsx`
-- `components/originkit/hero-03.css`
-- `public/originkit/hero-03/portraits-portrait-01.png`
-- `public/originkit/hero-03/portraits-portrait-03.png`
-- `public/originkit/hero-03/portraits-portrait-04.png`
-- `public/originkit/hero-03/portraits-portrait-06.png`
-- `public/originkit/hero-03/portraits-portrait-08.png`
-- `public/originkit/hero-03/nav-luxe-mark.svg`
-- `public/originkit/hero-03/nav-menu-icon.svg`
+- `components/originkit/hero-23.tsx`
+- `components/originkit/ui/hero-23/globe.tsx`
+- `components/originkit/ui/hero-23/sec1-hero.tsx`
+- `components/originkit/ui/hero-23/stardust.tsx`
+- `components/originkit/ui/hero-23/media-globe.tsx`
+- `components/originkit/ui/hero-23/scale-frame.tsx`
+- `components/originkit/hero-23.css`
+- `public/originkit/hero-23/brand-1-mark.svg`
+- `public/originkit/hero-23/brand-1-type.svg`
+- `public/originkit/hero-23/brand-2.svg`
+- `public/originkit/hero-23/brand-3.svg`
+- `public/originkit/hero-23/brand-4.svg`
+- `public/originkit/hero-23/corner-tl.svg`
+- `public/originkit/hero-23/corner-tr.svg`
+- `public/originkit/hero-23/corners.svg`
+- `public/originkit/hero-23/dot.svg`
+- `public/originkit/hero-23/flag-brazil.svg`
+- `public/originkit/hero-23/flag-canada.svg`
+- `public/originkit/hero-23/flag-ireland.svg`
+- `public/originkit/hero-23/flag-liberia.svg`
+- `public/originkit/hero-23/flag-sweden.svg`
+- `public/originkit/hero-23/flag-taiwan.svg`
+- `public/originkit/hero-23/flags-mask.svg`
+- `public/originkit/hero-23/logo.svg`
+- `public/originkit/hero-23/menu.svg`
 
 ## Required: Tailwind CSS
 
@@ -52,7 +60,7 @@ Tailwind v4 example in CSS:
 
 ### Section CSS
 
-Section styles ship as a file next to the entry (e.g. `components/originkit/hero-03.css`) and are
+Section styles ship as a file next to the entry (e.g. `components/originkit/hero-23.css`) and are
 imported from the TSX (`import "./….css"`).
 
 Tailwind `@theme` tokens are also hoisted into `originkit-section-themes.css`
@@ -66,9 +74,9 @@ in the TSX-imported file (nested `@import` after other rules breaks PostCSS).
 2. Example:
 
 ```tsx
-import X from "@/components/originkit/hero-03";
-import X from "@/components/originkit/ui/hero-03/gallery-tunnel";
-import X from "@/components/originkit/ui/hero-03/section-12-hero";
+import X from "@/components/originkit/hero-23";
+import X from "@/components/originkit/ui/hero-23/globe";
+import X from "@/components/originkit/ui/hero-23/sec1-hero";
 ```
 
 3. Render it once to verify layout + images.
@@ -79,7 +87,7 @@ import X from "@/components/originkit/ui/hero-03/section-12-hero";
 Install if missing:
 
 ```bash
-npm install motion three
+npm install d3-geo three
 ```
 
 ## Do not

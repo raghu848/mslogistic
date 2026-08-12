@@ -33,3 +33,10 @@
   --font-instrument-serif: "Instrument Serif", Inter, ui-sans-serif, sans-serif;
   --font-tight: "Inter Tight", Inter, ui-sans-serif, sans-serif;
 }
+
+/* originkit:hero-23 */
+/* components/originkit/hero-23.css */
+@theme {
+  --font-helvetica-neue: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --animate-hero-reveal: hero-reveal 300ms cubic-bezier(0.215, 0.61, 0.355, 1) both;
+}
