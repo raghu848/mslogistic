@@ -1,42 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
-@source "../components/originkit";
+@source "../app";
+@source "../components";
+@source "../lib";
 @import "./originkit-section-themes.css";
 
 /* ==========================================================================
    MS LOGISTICS — Premium Corporate Logistics Design System
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-
 :root {
   /* Color Tokens */
-  --navy-dark: #060B16;
-  --navy-main: #0B1221;
-  --navy-surface: #10192D;
-  --navy-card: #152238;
+  --navy-dark: #0B1426;
+  --navy-main: #0F172B;
+  --navy-surface: #10182B;
+  --navy-card: #0B1426;
   --navy-light: #1E2E4A;
 
-  --electric-blue: #2563EB;
-  --electric-blue-hover: #1D4ED8;
-  --electric-blue-glow: rgba(37, 99, 235, 0.35);
+  --electric-blue: #FF5428;
+  --electric-blue-hover: #E54B22;
+  --electric-blue-glow: rgba(255, 84, 40, 0.35);
 
-  --vibrant-orange: #FF5722;
-  --vibrant-orange-hover: #F4511E;
-  --vibrant-orange-glow: rgba(255, 87, 34, 0.4);
+  --vibrant-orange: #FF5428;
+  --vibrant-orange-hover: #E54B22;
+  --vibrant-orange-glow: rgba(255, 84, 40, 0.4);
 
-  --bg-light: #F8FAFC;
+  --orange-light: #FFF0EB;
+  --orange-border: #FFB7A3;
+
+  --bg-light: #F7F9FB;
   --bg-white: #FFFFFF;
   --bg-card-light: #FFFFFF;
 
-  --text-dark: #0F172A;
-  --text-medium: #475569;
-  --text-muted: #64748B;
-  --text-light: #94A3B8;
+  --text-dark: #10182B;
+  --text-medium: #53627A;
+  --text-muted: #53627A;
+  --text-light: #8A9BB4;
   --text-white: #FFFFFF;
 
   --border-dark: rgba(255, 255, 255, 0.08);
-  --border-dark-hover: rgba(255, 87, 34, 0.3);
-  --border-light: #E2E8F0;
+  --border-dark-hover: rgba(255, 84, 40, 0.3);
+  --border-light: #E7EBF0;
 
   --font-heading: 'Plus Jakarta Sans', sans-serif;
   --font-body: 'Inter', sans-serif;
@@ -47,9 +51,9 @@
   --radius-full: 9999px;
 
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.15);
-  --shadow-orange: 0 10px 25px rgba(255, 87, 34, 0.3);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.08);
+  --shadow-orange: 0 10px 25px rgba(255, 84, 40, 0.25);
 
   --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -67,6 +71,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 110px;
   font-size: 16px;
 }
 
@@ -113,9 +118,14 @@ img {
 /* Layout Utilities */
 .ms-container {
   width: 100%;
-  max-width: 1280px;
+  max-width: 1260px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 32px;
+}
+@media (max-width: 768px) {
+  .ms-container {
+    padding: 0 20px;
+  }
 }
 
 .ms-section {
@@ -254,103 +264,111 @@ img {
 /* ==========================================================================
    1. FUTURISTIC STICKY NAVBAR (FLOATING HUD PILL DESIGN)
    ========================================================================== */
+@keyframes navSlideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .ms-navbar {
   position: fixed;
-  top: 16px;
+  top: 24px;
   left: 0;
   right: 0;
   width: 100%;
-  max-width: 1260px;
+  max-width: 1400px;
   margin: 0 auto;
   z-index: 99999 !important;
-  padding: 0 16px;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 0 32px;
+  animation: navSlideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: top 0.3s ease, padding 0.3s ease;
+  will-change: transform, opacity;
 }
-
+ 
 .ms-nav-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(255, 255, 255, 0.85) !important;
-  backdrop-filter: blur(25px) saturate(180%);
-  -webkit-backdrop-filter: blur(25px) saturate(180%);
-  border: 1px solid rgba(0, 0, 0, 0.08) !important;
-  border-radius: 9999px;
-  padding: 8px 24px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+  background: #FFFFFF !important;
+  border: 1px solid var(--orange-border) !important;
+  border-radius: 40px;
+  height: 72px;
+  padding: 0 32px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
   position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
+ 
 .ms-navbar.scrolled .ms-nav-container {
-  background: rgba(255, 255, 255, 0.95) !important;
-  border-color: rgba(255, 87, 34, 0.25) !important;
-  backdrop-filter: blur(32px) saturate(200%);
-  -webkit-backdrop-filter: blur(32px) saturate(200%);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12), 0 0 20px rgba(255, 87, 34, 0.15);
-  padding: 6px 20px;
+  background: #FFFFFF !important;
+  border-color: var(--vibrant-orange) !important;
+  box-shadow: 0 15px 45px rgba(255, 84, 40, 0.1);
+  padding: 0 28px;
 }
-
+ 
 .ms-logo-img {
-  height: 52px;
+  height: 44px;
   width: auto;
   object-fit: contain;
-  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.1));
-  transition: transform 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
+ 
 .ms-logo-img:hover {
-  transform: scale(1.04);
+  transform: scale(1.03);
 }
-
+ 
 .ms-nav-menu {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 28px;
   list-style: none;
 }
-
+ 
 .ms-nav-link {
   font-family: var(--font-heading);
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  color: #0F172A !important;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text-dark) !important;
   position: relative;
   padding: 6px 0;
-  transition: color 0.3s ease;
+  transition: color 0.25s ease;
 }
-
+ 
 .ms-nav-link:hover,
 .ms-nav-link.active {
-  color: #FF5722 !important;
+  color: var(--vibrant-orange) !important;
 }
-
+ 
 .ms-nav-link::after {
   content: '';
   position: absolute;
   bottom: -2px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
   width: 0;
   height: 2px;
   background: var(--vibrant-orange);
-  box-shadow: 0 0 8px var(--vibrant-orange);
   border-radius: 2px;
-  transition: width 0.3s ease;
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
+ 
 .ms-nav-link:hover::after,
 .ms-nav-link.active::after {
   width: 100%;
 }
-
+ 
 /* Minimal Action Buttons */
 .ms-nav-actions {
   display: flex;
   align-items: center;
   gap: 12px;
 }
-
+ 
 .ms-btn-minimal-track {
   display: inline-flex;
   align-items: center;
@@ -366,40 +384,128 @@ img {
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease;
 }
-
+ 
 .ms-btn-minimal-track:hover {
-  background: rgba(37, 99, 235, 0.25);
-  border-color: var(--electric-blue);
+  background: rgba(255, 84, 40, 0.25);
+  border-color: var(--vibrant-orange);
   color: #FFFFFF;
-  box-shadow: 0 0 15px rgba(37, 99, 235, 0.4);
+  box-shadow: 0 0 15px rgba(255, 84, 40, 0.4);
 }
-
+ 
 .ms-btn-minimal-quote {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 22px;
+  padding: 12px 26px;
   border-radius: 9999px;
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.04em;
-  color: #FFFFFF;
-  background: linear-gradient(135deg, var(--vibrant-orange) 0%, #F4511E 100%);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 20px rgba(255, 87, 34, 0.4);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  color: #FFFFFF !important;
+  background: var(--vibrant-orange);
+  border: none;
+  box-shadow: 0 4px 14px rgba(255, 84, 40, 0.28);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease;
+  cursor: pointer;
 }
-
+ 
 .ms-btn-minimal-quote:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 8px 25px rgba(255, 87, 34, 0.6);
-  background: linear-gradient(135deg, #FF6E40 0%, var(--vibrant-orange) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 84, 40, 0.4);
+  background: var(--vibrant-orange-hover);
 }
 
+.ms-btn-minimal-quote:active {
+  transform: scale(0.98);
+}
+
+.ms-btn-minimal-quote i,
+.ms-btn-minimal-quote svg {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ms-btn-minimal-quote:hover i,
+.ms-btn-minimal-quote:hover svg {
+  transform: translateX(4px);
+}
+
+.ms-btn-admin-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 18px;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #10182B !important;
+  background: #FFFFFF;
+  border: 1px solid #E1E7EE;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, background-color 0.25s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.ms-btn-admin-pill:hover {
+  border-color: #FF5428;
+  color: #FF5428 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255, 84, 40, 0.16);
+  background: #FFF0EB;
+}
+
+.ms-btn-admin-pill:active {
+  transform: scale(0.98);
+}
+
+.ms-btn-admin-pill i,
+.ms-btn-admin-pill svg {
+  color: #FF5428;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ms-btn-admin-pill:hover i,
+.ms-btn-admin-pill:hover svg {
+  transform: scale(1.08);
+}
+
+/* Light Footer Theme Overrides */
+.ms-footer {
+  background: #F7F9FB !important;
+  color: #53627A !important;
+  padding-top: 80px !important;
+  padding-bottom: 40px !important;
+  border-top: 1px solid #E1E7EE !important;
+}
+
+.ms-footer-col h4 {
+  color: #10182B !important;
+  font-size: 1.1rem !important;
+  margin-bottom: 24px !important;
+  font-weight: 700 !important;
+}
+
+.ms-footer-link {
+  color: #53627A !important;
+  font-size: 0.9rem !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+
+.ms-footer-link:hover {
+  color: #FF5428 !important;
+}
+
+.ms-footer-bottom {
+  border-top: 1px solid #E1E7EE !important;
+  padding-top: 30px !important;
+  color: #53627A !important;
+}
+ 
 .ms-mobile-toggle {
   display: none;
   background: transparent;
-  color: var(--text-white);
+  color: var(--text-dark);
   font-size: 1.5rem;
   padding: 8px;
 }
@@ -528,97 +634,177 @@ img {
   z-index: 1 !important;
 }
 
+/* ==========================================================================
+   2. HERO SECTION (Two-Column Corporate Grid)
+   ========================================================================== */
+.ms-hero-section {
+  position: relative;
+  overflow: hidden;
+}
+
 .ms-hero-grid {
-  display: flex !important;
-  flex-direction: column !important;
+  display: grid !important;
+  grid-template-columns: 1.1fr 0.9fr !important;
+  gap: 64px !important;
   align-items: center !important;
-  justify-content: center !important;
-  text-align: center !important;
-  max-width: 920px !important;
+  text-align: left !important;
+  max-width: 100% !important;
   width: 100% !important;
-  margin: 0 auto !important;
+  margin: 0 !important;
   position: relative !important;
   z-index: 2 !important;
 }
 
-.ms-hero-content {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-  text-align: center !important;
-  z-index: 2 !important;
-  width: 100% !important;
-  margin: 0 auto !important;
+.ms-hero-img-container {
+  position: relative;
+  width: 100%;
+  border-radius: 24px;
 }
 
-.ms-badge {
+.ms-hero-img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  border-radius: 24px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-light);
+}
+
+.ms-hero-floating-card {
+  position: absolute;
+  bottom: 32px;
+  right: -24px;
+  background: var(--navy-dark) !important;
+  border-radius: 20px;
+  padding: 28px;
+  width: 320px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ms-floating-card-num {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--vibrant-orange);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.ms-floating-card-text {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #D1D5DB;
+  line-height: 1.4;
+}
+
+.ms-pill-badge {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
   padding: 6px 16px;
+  background: var(--orange-light);
+  color: var(--vibrant-orange);
+  border: 1px solid var(--orange-border);
   border-radius: var(--radius-full);
-  font-family: var(--font-heading);
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
+  font-size: 0.8rem;
+  font-weight: 700;
   text-transform: uppercase;
-  background: rgba(255, 87, 34, 0.1) !important;
-  color: var(--vibrant-orange) !important;
-  border: 1px solid rgba(255, 87, 34, 0.25) !important;
+  letter-spacing: 0.05em;
+  margin-bottom: 20px;
+}
+
+.ms-hero-main-title {
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+
+.ms-orange-text {
+  color: var(--vibrant-orange);
+}
+
+.ms-hero-desc-p1,
+.ms-hero-desc-p2 {
+  font-size: 1.05rem;
+  color: var(--text-medium);
+  line-height: 1.6;
   margin-bottom: 16px;
 }
 
-.ms-hero-headline {
-  font-size: 3.5rem;
-  font-weight: 800;
-  color: var(--text-white) !important;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-  margin-bottom: 24px;
+.ms-hero-desc-p2 {
+  margin-bottom: 28px;
 }
 
-.ms-hero-headline span {
-  background: linear-gradient(135deg, #FFFFFF 0%, rgba(255, 255, 255, 0.7) 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  color: #FFFFFF !important;
-}
-
-.ms-hero-headline .highlight-orange {
-  background: linear-gradient(135deg, var(--vibrant-orange) 0%, #FF8A65 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-}
-
-.ms-hero-subtext {
-  font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.75) !important;
-  margin-bottom: 40px;
-  max-width: 540px;
-  line-height: 1.6;
-}
-
-.ms-hero-btns {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.ms-hero-capabilities {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 16px;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
 }
 
-.ms-hero .ms-btn-outline {
-  background: transparent !important;
-  color: var(--text-white) !important;
-  border: 1px solid rgba(255, 255, 255, 0.25) !important;
-  border-radius: var(--radius-md);
+.ms-cap-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ms-cap-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--orange-light);
+  color: var(--vibrant-orange);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.ms-cap-text {
+  font-size: 0.95rem;
   font-weight: 600;
+  color: var(--text-dark);
 }
 
-.ms-hero .ms-btn-outline:hover {
-  border-color: var(--vibrant-orange) !important;
-  color: var(--vibrant-orange) !important;
-  background: rgba(255, 87, 34, 0.05) !important;
+.ms-hero-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 36px;
+  background: var(--vibrant-orange);
+  color: var(--text-white);
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-orange);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ms-hero-cta-btn:hover {
+  background: var(--vibrant-orange-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(255, 84, 40, 0.4);
+}
+
+@media (max-width: 1024px) {
+  .ms-hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+  .ms-hero-img {
+    height: 400px;
+  }
+  .ms-hero-floating-card {
+    right: 0;
+    bottom: -20px;
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+  }
 }
 
 /* Inline Track Bar Matching Localhost 100% */
@@ -913,7 +1099,7 @@ img {
    ========================================================================== */
 .ms-services-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
 
@@ -1009,71 +1195,140 @@ img {
 .ms-process-timeline {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
+  gap: 24px;
   position: relative;
-  margin-top: 40px;
+  margin-top: 48px;
+  padding: 10px 0;
 }
 
 .ms-process-line {
   position: absolute;
   top: 36px;
-  left: 10%;
-  right: 10%;
-  height: 3px;
-  background: var(--border-dark);
+  left: 8%;
+  right: 8%;
+  height: 4px;
+  background: #E2E8F0;
+  border-radius: 9999px;
   z-index: 1;
+  overflow: hidden;
 }
 
-.ms-process-line-active {
+.ms-process-line::after {
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
-  width: 60%;
-  background: linear-gradient(90deg, var(--electric-blue) 0%, var(--vibrant-orange) 100%);
-  border-radius: 3px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent 0%, #FF5428 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: processLaserBeam 2.8s linear infinite;
+}
+
+@keyframes processLaserBeam {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
 .ms-process-step {
   position: relative;
   z-index: 2;
   text-align: center;
+  padding: 0 8px;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ms-process-step:hover {
+  transform: translateY(-8px);
 }
 
 .ms-step-number-box {
   width: 72px;
   height: 72px;
   border-radius: 50%;
-  background: var(--navy-card);
-  border: 2px solid var(--border-dark);
+  background: #0B1426;
+  border: 4px solid #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 24px auto;
-  font-family: var(--font-heading);
+  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
   font-size: 1.3rem;
   font-weight: 800;
-  color: var(--text-white);
-  transition: var(--transition-normal);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  color: #FFFFFF !important;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 24px rgba(11, 20, 38, 0.15);
+  position: relative;
+}
+
+.ms-step-number-box::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid #FF5428;
+  opacity: 0.6;
+  animation: stepRingPulse 2.4s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ms-process-step:nth-child(2) .ms-step-number-box::before {
+  animation-delay: 0.48s;
+}
+
+.ms-process-step:nth-child(3) .ms-step-number-box::before {
+  animation-delay: 0.96s;
+}
+
+.ms-process-step:nth-child(4) .ms-step-number-box::before {
+  animation-delay: 1.44s;
+}
+
+.ms-process-step:nth-child(5) .ms-step-number-box::before {
+  animation-delay: 1.92s;
+}
+
+@keyframes stepRingPulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
 }
 
 .ms-process-step:hover .ms-step-number-box {
-  border-color: var(--vibrant-orange);
-  background: var(--vibrant-orange);
+  background: #FF5428;
+  border-color: #FFFFFF;
   transform: scale(1.1);
+  box-shadow: 0 12px 30px rgba(255, 84, 40, 0.4);
 }
 
 .ms-step-title {
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-bottom: 8px;
-  color: var(--text-white);
+  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 1.1rem !important;
+  font-weight: 800 !important;
+  margin-bottom: 8px !important;
+  color: #10182B !important;
+  letter-spacing: -0.01em;
+  transition: color 0.25s ease;
+}
+
+.ms-process-step:hover .ms-step-title {
+  color: #FF5428 !important;
 }
 
 .ms-step-desc {
-  font-size: 0.85rem;
-  color: var(--text-light);
+  font-size: 0.85rem !important;
+  color: #53627A !important;
+  line-height: 1.6 !important;
+  margin: 0 !important;
 }
 
 /* ==========================================================================
@@ -1303,7 +1558,7 @@ img {
    ========================================================================== */
 .ms-why-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
 
@@ -1511,12 +1766,13 @@ img {
    ========================================================================== */
 .ms-quote-grid {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
+  grid-template-columns: 2fr 3fr;
   gap: 60px;
-  align-items: center;
+  align-items: start;
 }
 
-.ms-quote-form {
+.ms-quote-form,
+.ms-quote-card {
   background: var(--bg-white);
   padding: 40px;
   border-radius: var(--radius-lg);
@@ -1771,7 +2027,11 @@ body {
   }
 
   .ms-hero-grid,
-  .ms-about-grid,
+  .ms-about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
   .ms-quote-grid {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -1812,9 +2072,7 @@ body {
     padding: 60px 0;
   }
 
-  .ms-container {
-    padding: 0 16px;
-  }
+
 
   .ms-desktop-video {
     display: none !important;
@@ -1965,5 +2223,479 @@ body {
   .ms-badge {
     font-size: 0.7rem;
     padding: 4px 12px;
+  }
+}
+
+/* Redesigned About Section Support */
+.ms-about-img-alt {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  border-radius: 24px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-light);
+}
+
+.ms-about-value-highlights {
+  margin-top: 24px;
+}
+
+/* FAQ Icon Transition Support */
+.ms-faq-icon {
+  transition: transform 0.3s ease, color 0.3s ease;
+  color: var(--text-light);
+}
+
+.ms-faq-item.active .ms-faq-icon {
+  transform: rotate(180deg);
+  color: var(--vibrant-orange);
+}
+
+/* ==========================================================================
+   FORM SPECIFIC PREMIUM LOGISTICS QUOTE FORM STYLES
+   ========================================================================== */
+.ms-custom-quote-card {
+  background: #FFFFFF !important;
+  border: 1px solid #E5EAF0 !important;
+  border-radius: 24px !important;
+  box-shadow: 0 10px 40px rgba(16, 24, 40, 0.06), 0 2px 8px rgba(16, 24, 40, 0.04) !important;
+  padding: 50px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  transition: all 0.3s ease !important;
+}
+
+@media (max-width: 1024px) {
+  .ms-custom-quote-card {
+    padding: 36px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .ms-custom-quote-card {
+    padding: 24px !important;
+  }
+}
+
+.ms-custom-form-row {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 20px !important;
+  margin-bottom: 0px !important;
+}
+
+@media (max-width: 768px) {
+  .ms-custom-form-row {
+    grid-template-columns: 1fr !important;
+    gap: 0px !important;
+    margin-bottom: 0px !important;
+  }
+}
+
+.ms-custom-form-group {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0px !important;
+  margin-bottom: 20px !important;
+}
+
+@media (max-width: 768px) {
+  .ms-custom-form-group {
+    margin-bottom: 18px !important;
+  }
+}
+
+.ms-custom-form-label {
+  font-family: var(--font-heading) !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #10182B !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  margin-bottom: 10px !important;
+}
+
+.ms-custom-form-input {
+  background: #F7F9FB !important;
+  border: 1px solid #E1E7EE !important;
+  border-radius: 10px !important;
+  height: 64px !important;
+  padding: 18px 20px !important;
+  font-family: var(--font-body) !important;
+  font-size: 16px !important;
+  color: #10182B !important;
+  outline: none !important;
+  transition: all 0.2s ease !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+select.ms-custom-form-input {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%237A8799' d='M6 8L1 3h10z'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 10px center !important;
+  padding-right: 28px !important;
+}
+
+.ms-custom-form-input::placeholder {
+  color: #7A8799 !important;
+  opacity: 1 !important;
+}
+
+.ms-custom-form-input:focus {
+  border-color: #FF5428 !important;
+  background: #FFFFFF !important;
+  box-shadow: 0 0 0 4px rgba(255, 84, 40, 0.12) !important;
+}
+
+.ms-custom-btn-submit {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  width: 100% !important;
+  background: #FF5428 !important;
+  color: #FFFFFF !important;
+  border-radius: 14px !important;
+  height: 66px !important;
+  font-weight: 700 !important;
+  font-size: 17px !important;
+  border: none !important;
+  outline: none !important;
+  cursor: pointer !important;
+  box-shadow: 0 6px 20px rgba(255, 84, 40, 0.25) !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-sizing: border-box !important;
+  margin-top: 4px !important;
+}
+
+.ms-custom-btn-submit:hover {
+  background: #E0431B !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 25px rgba(255, 84, 40, 0.4) !important;
+}
+
+.ms-custom-btn-submit:active {
+  transform: translateY(0px) !important;
+}
+
+/* ==========================================================================
+   PREMIUM FAQ SECTION (Scoped)
+   ========================================================================== */
+.ms-pfaq-section {
+  background: #FFFFFF;
+  padding: 120px 24px;
+}
+
+@media (max-width: 768px) {
+  .ms-pfaq-section {
+    padding: 80px 16px;
+  }
+}
+
+.ms-pfaq-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.ms-pfaq-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.ms-pfaq-badge {
+  display: inline-block;
+  background: rgba(255, 84, 40, 0.08);
+  border: 1px solid rgba(255, 84, 40, 0.45);
+  color: #FF5428;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 10px 24px;
+  margin-bottom: 28px;
+}
+
+.ms-pfaq-title {
+  color: #FF5428;
+  font-weight: 800;
+  font-size: 54px;
+  line-height: 1.1;
+  margin: 0;
+  font-family: var(--font-heading);
+}
+
+@media (max-width: 768px) {
+  .ms-pfaq-title {
+    font-size: 38px;
+  }
+}
+
+.ms-pfaq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ms-pfaq-item {
+  background: #FFFFFF;
+  border-radius: 15px;
+  border: 1px solid transparent;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.ms-pfaq-item.ms-pfaq-active {
+  border-color: #FF5428;
+  box-shadow: 0 4px 20px rgba(255, 84, 40, 0.08);
+}
+
+.ms-pfaq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 32px 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-heading);
+  font-size: 19px;
+  font-weight: 700;
+  color: #10182B;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+@media (max-width: 768px) {
+  .ms-pfaq-question {
+    padding: 24px;
+    font-size: 17px;
+  }
+}
+
+.ms-pfaq-arrow {
+  flex-shrink: 0;
+  font-size: 16px;
+  color: #8290A5;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.ms-pfaq-active .ms-pfaq-arrow {
+  color: #FF5428;
+}
+
+.ms-pfaq-answer-wrap {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.ms-pfaq-active .ms-pfaq-answer-wrap {
+  max-height: 400px;
+}
+
+.ms-pfaq-answer {
+  padding: 0 36px 32px 36px;
+  margin: 0;
+  color: #53627A;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+@media (max-width: 768px) {
+  .ms-pfaq-answer {
+    padding: 0 24px 24px 24px;
+    font-size: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ms-pfaq-answer-wrap {
+    transition: none;
+  }
+  .ms-pfaq-arrow {
+    transition: none;
+  }
+  .ms-pfaq-item {
+    transition: none;
+  }
+}
+
+/* ==========================================================================
+   15. LOGISTICS CORPORATE ANIMATIONS & SCROLL REVEAL SYSTEM
+   ========================================================================== */
+
+/* High-performance Scroll Reveal System */
+.ms-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.ms-reveal-left {
+  opacity: 0;
+  transform: translateX(-28px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.ms-reveal-right {
+  opacity: 0;
+  transform: translateX(28px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.ms-reveal.ms-revealed,
+.ms-reveal-left.ms-revealed,
+.ms-reveal-right.ms-revealed {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* Stagger Delays */
+.ms-delay-100 { transition-delay: 100ms; }
+.ms-delay-150 { transition-delay: 150ms; }
+.ms-delay-200 { transition-delay: 200ms; }
+.ms-delay-250 { transition-delay: 250ms; }
+.ms-delay-300 { transition-delay: 300ms; }
+.ms-delay-350 { transition-delay: 350ms; }
+.ms-delay-400 { transition-delay: 400ms; }
+.ms-delay-500 { transition-delay: 500ms; }
+
+/* Service Cards Interaction */
+.ms-service-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease !important;
+}
+
+.ms-service-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 16px 36px rgba(16, 24, 43, 0.08) !important;
+  border-color: rgba(255, 84, 40, 0.3) !important;
+}
+
+.ms-service-icon-box {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease !important;
+}
+
+.ms-service-card:hover .ms-service-icon-box {
+  transform: scale(1.04) translateY(-2px) !important;
+}
+
+.ms-service-link i,
+.ms-service-link svg {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ms-service-card:hover .ms-service-link i,
+.ms-service-card:hover .ms-service-link svg {
+  transform: translateX(4px);
+}
+
+/* About Image Hover */
+.ms-about-img-wrapper {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ms-about-img-wrapper:hover {
+  transform: translateY(-4px);
+}
+
+/* Regional Gateway Hub Cards */
+.ms-hub-card {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease !important;
+}
+
+.ms-hub-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.15) !important;
+  border-color: rgba(255, 84, 40, 0.4) !important;
+}
+
+.ms-hub-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ms-hub-tag::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 6px #10B981;
+  animation: hubPulse 2s infinite;
+}
+
+@keyframes hubPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+/* Global Buttons Interaction */
+.ms-btn {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.ms-btn:hover {
+  transform: translateY(-2px) !important;
+}
+
+.ms-btn:active {
+  transform: scale(0.98) !important;
+}
+
+.ms-btn i,
+.ms-btn svg {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ms-btn:hover i,
+.ms-btn:hover svg {
+  transform: translateX(3px);
+}
+
+/* Reduced Motion Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .ms-navbar {
+    animation: none !important;
+  }
+
+  .ms-reveal,
+  .ms-reveal-left,
+  .ms-reveal-right {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .ms-process-line::after,
+  .ms-step-number-box::before,
+  .ms-hub-tag::before {
+    animation: none !important;
   }
 }

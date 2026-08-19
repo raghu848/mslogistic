@@ -1,0 +1,637 @@
+/* ==========================================================================
+   MS LOGISTIC — Admin Panel Bulletproof Namespaced Styles
+   ========================================================================== */
+
+/* Login Styles */
+.ms-admin-login-wrapper {
+  min-height: 100vh;
+  background-color: #F7F9FB;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.ms-admin-login-topbar {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ms-admin-login-container {
+  width: 100%;
+  max-width: 440px;
+  margin: 32px auto;
+  box-sizing: border-box;
+}
+
+.ms-admin-login-card {
+  background: #FFFFFF;
+  border-radius: 24px;
+  padding: 40px 36px;
+  border: 1px solid #E5EAF0;
+  box-shadow: 0 12px 40px rgba(16, 24, 43, 0.08), 0 2px 8px rgba(16, 24, 43, 0.04);
+  box-sizing: border-box;
+}
+
+.ms-admin-login-logo {
+  height: 48px;
+  max-width: 200px;
+  width: auto;
+  margin: 0 auto 16px auto;
+  display: block;
+  object-fit: contain;
+}
+
+.ms-admin-login-title {
+  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 22px;
+  font-weight: 800;
+  color: #10182B;
+  text-align: center;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.01em;
+}
+
+.ms-admin-login-subtitle {
+  font-size: 13px;
+  color: #53627A;
+  text-align: center;
+  margin: 0 0 24px 0;
+  line-height: 1.5;
+}
+
+.ms-admin-form-group {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ms-admin-form-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #10182B;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ms-admin-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.ms-admin-input-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #8A9BB4;
+  pointer-events: none;
+}
+
+.ms-admin-input {
+  width: 100%;
+  height: 50px;
+  padding: 0 16px 0 46px;
+  background: #F7F9FB;
+  border: 1px solid #E1E7EE;
+  border-radius: 12px;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 14px;
+  color: #10182B;
+  outline: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.ms-admin-input:focus {
+  border-color: #FF5428;
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(255, 84, 40, 0.12);
+}
+
+.ms-admin-btn-primary {
+  width: 100%;
+  height: 52px;
+  background: #FF5428;
+  color: #FFFFFF !important;
+  border-radius: 12px;
+  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 6px 20px rgba(255, 84, 40, 0.25);
+  transition: all 0.25s ease;
+  margin-top: 10px;
+}
+
+.ms-admin-btn-primary:hover {
+  background: #E0431B;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(255, 84, 40, 0.35);
+}
+
+.ms-admin-btn-primary:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.ms-admin-error-box {
+  background: #FEF2F2;
+  border: 1px solid #FCA5A5;
+  color: #B91C1C;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 13px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* ==========================================================================
+   2-Column Dashboard Shell Layout
+   ========================================================================== */
+
+.ms-admin-shell {
+  display: flex !important;
+  width: 100% !important;
+  min-height: 100vh !important;
+  background-color: #F7F9FB !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+  color: #10182B !important;
+}
+
+/* Left Fixed Sidebar Column */
+.ms-admin-shell .ms-admin-sidebar {
+  width: 280px !important;
+  min-width: 280px !important;
+  max-width: 280px !important;
+  flex-shrink: 0 !important;
+  height: 100vh !important;
+  position: sticky !important;
+  top: 0 !important;
+  left: 0 !important;
+  background: #FFFFFF !important;
+  border-right: 1px solid #E5EAF0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  z-index: 50 !important;
+  box-sizing: border-box !important;
+  overflow-y: auto !important;
+}
+
+/* Logo Area */
+.ms-admin-shell .ms-admin-brand-box {
+  height: 80px;
+  padding: 0 20px;
+  border-bottom: 1px solid #E5EAF0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  box-sizing: border-box;
+}
+
+.ms-admin-shell .ms-admin-logo-img {
+  max-height: 40px !important;
+  max-width: 150px !important;
+  width: auto !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+/* Nav Menu */
+.ms-admin-shell .ms-admin-nav-list {
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-sizing: border-box;
+}
+
+.ms-admin-shell .ms-admin-nav-header {
+  font-size: 11px;
+  font-weight: 700;
+  color: #8A9BB4;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 8px 12px 4px 12px;
+}
+
+.ms-admin-shell .ms-admin-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #53627A;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.ms-admin-shell .ms-admin-nav-item:hover {
+  background-color: #FFF0EB;
+  color: #FF5428;
+}
+
+.ms-admin-shell .ms-admin-nav-item.active {
+  background-color: #FF5428 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(255, 84, 40, 0.25) !important;
+}
+
+.ms-admin-shell .ms-admin-nav-item.active svg {
+  color: #FFFFFF !important;
+}
+
+/* User Card in Sidebar */
+.ms-admin-shell .ms-admin-user-box {
+  padding: 16px;
+  border-top: 1px solid #E5EAF0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #FFFFFF;
+  box-sizing: border-box;
+}
+
+.ms-admin-shell .ms-admin-user-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: #F7F9FB;
+  border: 1px solid #E5EAF0;
+  border-radius: 12px;
+}
+
+.ms-admin-shell .ms-admin-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #10182B;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.ms-admin-shell .ms-admin-btn-logout {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #DC2626;
+  background: #FEF2F2;
+  border: 1px solid #FCA5A5;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ms-admin-shell .ms-admin-btn-logout:hover {
+  background: #FEE2E2;
+}
+
+/* Right Main Content Column */
+.ms-admin-shell .ms-admin-main {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  background-color: #F7F9FB !important;
+  box-sizing: border-box !important;
+}
+
+/* Top Sticky Header */
+.ms-admin-shell .ms-admin-header {
+  height: 80px !important;
+  background: #FFFFFF !important;
+  border-bottom: 1px solid #E5EAF0 !important;
+  padding: 0 32px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 30 !important;
+  box-sizing: border-box !important;
+}
+
+/* Content Canvas */
+.ms-admin-shell .ms-admin-content {
+  padding: 32px !important;
+  width: 100% !important;
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  box-sizing: border-box !important;
+}
+
+/* ==========================================================================
+   Dashboard Canvas UI Elements (High Specificity)
+   ========================================================================== */
+
+.ms-admin-shell .ms-adm-dash-topbar {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 16px !important;
+  margin-bottom: 28px !important;
+  flex-wrap: wrap !important;
+}
+
+.ms-admin-shell .ms-adm-dash-title {
+  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif) !important;
+  font-size: 22px !important;
+  font-weight: 800 !important;
+  color: #10182B !important;
+  margin: 0 !important;
+  letter-spacing: -0.01em !important;
+}
+
+.ms-admin-shell .ms-adm-dash-subtitle {
+  font-size: 13px !important;
+  color: #53627A !important;
+  margin: 4px 0 0 0 !important;
+}
+
+.ms-admin-shell .ms-adm-dash-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.ms-admin-shell .ms-adm-btn-refresh {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 10px 18px !important;
+  background: #FFFFFF !important;
+  border: 1px solid #E5EAF0 !important;
+  color: #10182B !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  border-radius: 10px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+}
+
+.ms-admin-shell .ms-adm-btn-refresh:hover {
+  background: #F7F9FB !important;
+  border-color: #CBD5E1 !important;
+}
+
+.ms-admin-shell .ms-adm-btn-view-all {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 10px 20px !important;
+  background: #FF5428 !important;
+  color: #FFFFFF !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  border-radius: 10px !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 4px 14px rgba(255, 84, 40, 0.25) !important;
+}
+
+.ms-admin-shell .ms-adm-btn-view-all:hover {
+  background: #E0431B !important;
+  transform: translateY(-1px) !important;
+}
+
+/* 4 Metric Cards Grid */
+.ms-admin-shell .ms-adm-stats-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 20px !important;
+  margin-bottom: 32px !important;
+}
+
+.ms-admin-shell .ms-adm-stat-card {
+  background: #FFFFFF !important;
+  border: 1px solid #E5EAF0 !important;
+  border-radius: 16px !important;
+  padding: 24px !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+}
+
+.ms-admin-shell .ms-adm-stat-card:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05) !important;
+}
+
+.ms-admin-shell .ms-adm-stat-label {
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  color: #8A9BB4 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  margin: 0 !important;
+}
+
+.ms-admin-shell .ms-adm-stat-number {
+  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif) !important;
+  font-size: 32px !important;
+  font-weight: 900 !important;
+  color: #10182B !important;
+  margin: 8px 0 4px 0 !important;
+  line-height: 1 !important;
+}
+
+.ms-admin-shell .ms-adm-stat-desc {
+  font-size: 12px !important;
+  color: #53627A !important;
+  margin: 0 !important;
+}
+
+.ms-admin-shell .ms-adm-stat-icon-wrapper {
+  width: 52px !important;
+  height: 52px !important;
+  border-radius: 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+}
+
+/* Recent Inquiries Section Card */
+.ms-admin-shell .ms-table-container-card {
+  background: #FFFFFF !important;
+  border: 1px solid #E5EAF0 !important;
+  border-radius: 16px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02) !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  margin-bottom: 24px !important;
+}
+
+.ms-admin-shell .ms-table-header-box {
+  padding: 20px 24px !important;
+  border-bottom: 1px solid #E5EAF0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.ms-admin-shell .ms-inquiries-table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  text-align: left !important;
+}
+
+.ms-admin-shell .ms-inquiries-table th {
+  background: #F8FAFC !important;
+  padding: 14px 24px !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  color: #8A9BB4 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  border-bottom: 1px solid #E5EAF0 !important;
+}
+
+.ms-admin-shell .ms-inquiries-table td {
+  padding: 18px 24px !important;
+  border-bottom: 1px solid #E5EAF0 !important;
+  color: #53627A !important;
+  vertical-align: middle !important;
+}
+
+.ms-admin-shell .ms-inquiries-table tr:hover td {
+  background: #F8FAFC !important;
+}
+
+.ms-admin-shell .ms-inquiries-table tr:last-child td {
+  border-bottom: none !important;
+}
+
+.ms-admin-shell .ms-status-dropdown {
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  padding: 6px 12px !important;
+  border-radius: 8px !important;
+  border: 1px solid #E2E8F0 !important;
+  background: #FFFFFF !important;
+  color: #10182B !important;
+  cursor: pointer !important;
+  outline: none !important;
+  transition: border-color 0.2s ease !important;
+}
+
+.ms-admin-shell .ms-status-dropdown:focus {
+  border-color: #FF5428 !important;
+}
+
+.ms-admin-shell .ms-btn-inspect {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 6px 14px !important;
+  border-radius: 8px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  background: #F1F5F9 !important;
+  border: 1px solid #E2E8F0 !important;
+  color: #10182B !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.ms-admin-shell .ms-btn-inspect:hover {
+  background: #FF5428 !important;
+  border-color: #FF5428 !important;
+  color: #FFFFFF !important;
+}
+
+/* Responsive Overrides */
+@media (max-width: 1200px) {
+  .ms-admin-shell .ms-adm-stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .ms-admin-shell .ms-admin-sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    transform: translateX(-100%) !important;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15) !important;
+  }
+
+  .ms-admin-shell .ms-admin-sidebar.open {
+    transform: translateX(0) !important;
+  }
+
+  .ms-admin-shell .ms-admin-main {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+
+  .ms-admin-shell .ms-admin-header {
+    padding: 0 20px !important;
+  }
+
+  .ms-admin-shell .ms-admin-content {
+    padding: 20px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .ms-admin-shell .ms-adm-stats-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .ms-admin-shell .ms-admin-content {
+    padding: 16px !important;
+  }
+  .ms-admin-shell .ms-adm-dash-topbar {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+}

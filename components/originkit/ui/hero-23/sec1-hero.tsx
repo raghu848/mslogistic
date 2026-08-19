@@ -102,7 +102,7 @@ const DarkButton = ({
 }) => (
   <a
     href={href}
-    className={`relative flex shrink-0 cursor-pointer items-center justify-center rounded-[6px] border border-white/20 bg-gradient-to-r from-[#2563EB] to-[#1D4ED8] shadow-[0_4px_20px_rgba(37,99,235,0.3)] transition-all duration-200 hover:scale-[1.02] hover:shadow-[0_8px_25px_rgba(37,99,235,0.5)] ${className}`}
+    className={`relative flex shrink-0 cursor-pointer items-center justify-center rounded-[6px] border border-white/20 bg-gradient-to-r from-[#FF5722] to-[#F4511E] shadow-[0_4px_20px_rgba(255,87,34,0.3)] transition-all duration-200 hover:scale-[1.02] hover:shadow-[0_8px_25px_rgba(255,87,34,0.5)] ${className}`}
   >
     <p className="relative shrink-0 whitespace-nowrap text-[15px] font-bold leading-normal tracking-[0.02em] text-white">
       {label}
@@ -217,7 +217,7 @@ const Avatars = ({ size, overlap }: { size: string; overlap: string }) => (
     {[1, 2, 3].map((n) => (
       <div
         key={n}
-        className="relative shrink-0 flex items-center justify-center rounded-full bg-[#2563EB] text-white border border-white/20 overflow-hidden"
+        className="relative shrink-0 flex items-center justify-center rounded-full bg-[#FF5722] text-white border border-white/20 overflow-hidden"
         style={{
           width: size,
           height: size,
@@ -430,19 +430,22 @@ export const Sec1Hero = () => {
     <div className="relative w-full min-h-[92vh] bg-gradient-to-b from-[#0F0F0F] via-[#0B1220] to-[#060B16] overflow-hidden text-white pt-36 sm:pt-44 lg:pt-48 pb-16 lg:pb-24 px-4 sm:px-8 lg:px-12 flex items-center justify-center">
       {/* Centered Ambient Glow */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] sm:w-[800px] lg:w-[1000px] h-[550px] sm:h-[800px] lg:h-[1000px] bg-gradient-to-r from-[#2563EB]/20 via-[#FF5722]/15 to-transparent rounded-full blur-[170px]"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] sm:w-[800px] lg:w-[1000px] h-[550px] sm:h-[800px] lg:h-[1000px] bg-gradient-to-r from-[#FF5722]/20 via-[#F4511E]/15 to-transparent rounded-full blur-[170px]"></div>
       </div>
 
       {/* Centered Moving 3D Earth Globe */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[540px] md:w-[650px] lg:w-[750px] h-[340px] sm:h-[540px] md:h-[650px] lg:h-[750px] pointer-events-none rounded-full overflow-hidden opacity-90 z-0 shadow-[0_20px_80px_rgba(37,99,235,0.2)]">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[540px] md:w-[650px] lg:w-[750px] h-[340px] sm:h-[540px] md:h-[650px] lg:h-[750px] pointer-events-none rounded-full overflow-hidden opacity-90 z-0 shadow-[0_20px_80px_rgba(255,87,34,0.2)]">
         <MediaGlobe />
       </div>
 
       {/* Centered Hero Content Container (Foreground Overlay Layer) */}
       <div className="relative z-10 max-w-4xl w-full mx-auto flex flex-col items-center text-center gap-6 sm:gap-7">
-        <Badge step={80} />
+        <Badge step={0} />
 
-        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight sm:leading-none drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)]">
+        <h1
+          style={delay(150)}
+          className={`${REVEAL} text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight sm:leading-none drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)]`}
+        >
           <span className="text-white drop-shadow-md">WE MOVE YOUR </span>
           <br className="hidden sm:inline" />
           <span className="text-white drop-shadow-md">BUSINESS </span>
@@ -459,7 +462,10 @@ export const Sec1Hero = () => {
           </span>
         </h1>
 
-        <p className="text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed font-bold px-2 text-slate-100 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+        <p
+          style={delay(300)}
+          className={`${REVEAL} text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed font-bold px-2 text-slate-100 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]`}
+        >
           Smart, reliable and seamless logistics solutions connecting your cargo to the world with precision and on-time guaranteed delivery.
         </p>
       </div>

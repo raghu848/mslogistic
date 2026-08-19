@@ -30,10 +30,10 @@ export const MediaGlobe = ({ query }: { query?: string }) => {
       speed={7}
       oceanColor="#090D16"
       dots={{ color: "#FF5722", size: 6, density: 8, allDots: false }}
-      fillColor="#2563EB"
-      outlineColor="#3B82F6"
+      fillColor="#1C1917"
+      outlineColor="#FF5722"
       showOutline={true}
-      graticuleColor="rgba(59, 130, 246, 0.25)"
+      graticuleColor="rgba(255, 87, 34, 0.15)"
       markerConfig={{
         markers: [
           { lat: 40.7128, lng: -74.006 }, // New York

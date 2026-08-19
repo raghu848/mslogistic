@@ -235,9 +235,12 @@ export default function Globe({
         markerConfig.size
     );
     const scaleMultiplier = mapScaleUiToMultiplier(scale);
+    const markerConfigString = JSON.stringify(markerConfig);
+    const dotsString = JSON.stringify(dots);
 
     useEffect(() => {
         if (!containerRef.current) return;
+        const parsedMarkerConfig = JSON.parse(markerConfigString) as MarkerConfig;
         const container = containerRef.current;
         const containerWidth =
             container.clientWidth || container.offsetWidth || 800;
@@ -289,7 +292,7 @@ export default function Globe({
         const resolvedOceanColor = oceanColor;
         const resolvedOutlineColor = outlineColor;
         const resolvedDotColor = dotColor;
-        const resolvedMarkerColor = markerConfig.color;
+        const resolvedMarkerColor = parsedMarkerConfig.color;
         const resolvedGraticuleColor = graticuleColor;
         const resolvedFillColor = fillColor;
         const oceanRgba = parseColorToRgba(resolvedOceanColor);
@@ -462,16 +465,22 @@ export default function Globe({
                 setIsLoading(true);
                 let landFeatures = cachedLandFeatures;
                 if (!landFeatures) {
-                    if (!pendingLandDataFetch) {
-                        pendingLandDataFetch = fetch(
-                            "https://raw.githubusercontent.com/martynafford/natural-earth-geojson/refs/heads/master/50m/physical/ne_50m_land.json"
-                        ).then((res) => {
-                            if (!res.ok) throw new Error("Failed to load land data");
-                            return res.json();
-                        });
+                    try {
+                        if (!pendingLandDataFetch) {
+                            pendingLandDataFetch = fetch(
+                                "/ne_50m_land.json"
+                            ).then((res) => {
+                                if (!res.ok) throw new Error("Failed to load land data");
+                                return res.json();
+                            });
+                        }
+                        landFeatures = await pendingLandDataFetch;
+                        cachedLandFeatures = landFeatures;
+                    } catch (fetchErr) {
+                        console.warn("[Globe] ne_50m_land.json fetch failed, using procedural dots fallback:", fetchErr);
+                        pendingLandDataFetch = null;
+                        landFeatures = null;
                     }
-                    landFeatures = await pendingLandDataFetch;
-                    cachedLandFeatures = landFeatures;
                 }
 
                 while (continentOutlineGroup.children.length > 0) {
@@ -479,7 +488,7 @@ export default function Globe({
                         continentOutlineGroup.children[0]
                     );
                 }
-                if (showOutline && outlineColor && outlineRgba.a > 0) {
+                if (landFeatures && landFeatures.features && showOutline && outlineColor && outlineRgba.a > 0) {
                     const outlineColorObj = new Color(resolvedOutlineColor);
                     const outlineMaterial = new MeshBasicMaterial({
                         color: outlineColorObj,
@@ -587,46 +596,64 @@ export default function Globe({
                     );
                 }
 
-                const bitmapWidth = 2048;
-                const bitmapHeight = 1024;
-                const offscreenCanvas = document.createElement("canvas");
-                offscreenCanvas.width = bitmapWidth;
-                offscreenCanvas.height = bitmapHeight;
-                const ctx = offscreenCanvas.getContext("2d", {
-                    willReadFrequently: true,
-                });
-                if (!ctx) throw new Error("Canvas not supported");
-                const projection = geoEquirectangular().fitSize(
-                    [bitmapWidth, bitmapHeight],
-                    { type: "Sphere" } as any
-                );
-                const pathGenerator = geoPath()
-                    .projection(projection)
-                    .context(ctx);
-                ctx.fillStyle = "#000";
-                ctx.fillRect(0, 0, bitmapWidth, bitmapHeight);
-                ctx.fillStyle = "#fff";
-                ctx.beginPath();
-                landFeatures.features.forEach((feature: any) => {
-                    pathGenerator(feature);
-                });
-                ctx.fill();
-                const imageData = ctx.getImageData(
-                    0,
-                    0,
-                    bitmapWidth,
-                    bitmapHeight
-                );
-                const pixels = imageData.data;
-                const isOnLand = (lng: number, lat: number) => {
-                    const x =
-                        Math.round(((lng + 180) / 360) * bitmapWidth) %
-                        bitmapWidth;
-                    const y = Math.round(((90 - lat) / 180) * bitmapHeight);
-                    const clampedY = Math.max(0, Math.min(bitmapHeight - 1, y));
-                    const idx = (clampedY * bitmapWidth + x) * 4;
-                    return pixels[idx] > 128;
+                let isOnLand = (lng: number, lat: number) => {
+                    if (allDots) return true;
+                    const inNA = lng >= -160 && lng <= -50 && lat >= 15 && lat <= 70;
+                    const inSA = lng >= -85 && lng <= -35 && lat >= -55 && lat <= 12;
+                    const inEU = lng >= -10 && lng <= 50 && lat >= 35 && lat <= 70;
+                    const inAF = lng >= -20 && lng <= 50 && lat >= -35 && lat <= 35;
+                    const inAS = lng >= 50 && lng <= 145 && lat >= 5 && lat <= 75;
+                    const inAU = lng >= 110 && lng <= 155 && lat >= -45 && lat <= -10;
+                    return inNA || inSA || inEU || inAF || inAS || inAU;
                 };
+
+                if (landFeatures && landFeatures.features) {
+                    try {
+                        const bitmapWidth = 2048;
+                        const bitmapHeight = 1024;
+                        const offscreenCanvas = document.createElement("canvas");
+                        offscreenCanvas.width = bitmapWidth;
+                        offscreenCanvas.height = bitmapHeight;
+                        const ctx = offscreenCanvas.getContext("2d", {
+                            willReadFrequently: true,
+                        });
+                        if (ctx) {
+                            const projection = geoEquirectangular().fitSize(
+                                [bitmapWidth, bitmapHeight],
+                                { type: "Sphere" } as any
+                            );
+                            const pathGenerator = geoPath()
+                                .projection(projection)
+                                .context(ctx);
+                            ctx.fillStyle = "#000";
+                            ctx.fillRect(0, 0, bitmapWidth, bitmapHeight);
+                            ctx.fillStyle = "#fff";
+                            ctx.beginPath();
+                            landFeatures.features.forEach((feature: any) => {
+                                pathGenerator(feature);
+                            });
+                            ctx.fill();
+                            const imageData = ctx.getImageData(
+                                0,
+                                0,
+                                bitmapWidth,
+                                bitmapHeight
+                            );
+                            const pixels = imageData.data;
+                            isOnLand = (lng: number, lat: number) => {
+                                const x =
+                                    Math.round(((lng + 180) / 360) * bitmapWidth) %
+                                    bitmapWidth;
+                                const y = Math.round(((90 - lat) / 180) * bitmapHeight);
+                                const clampedY = Math.max(0, Math.min(bitmapHeight - 1, y));
+                                const idx = (clampedY * bitmapWidth + x) * 4;
+                                return pixels[idx] > 128;
+                            };
+                        }
+                    } catch (rasterErr) {
+                        console.warn("[Globe] Canvas rasterization failed, using procedural continents fallback:", rasterErr);
+                    }
+                }
 
                 if (fill === "solid") {
                     const texW = 1024;
@@ -735,7 +762,7 @@ export default function Globe({
                 canvas.style.visibility = "visible";
                 setIsLoading(false);
             } catch (err) {
-                setError("Failed to load land map data");
+                console.warn("[Globe] Non-fatal visualization initialization warning:", err);
                 setIsLoading(false);
             }
         };
@@ -743,7 +770,7 @@ export default function Globe({
         const updateMarkers = () => {
             markerMeshes.forEach((mesh) => globeGroup.remove(mesh));
             markerMeshes = [];
-            if (markerConfig.markers && markerConfig.markers.length > 0) {
+            if (parsedMarkerConfig.markers && parsedMarkerConfig.markers.length > 0) {
                 const markerSize = 0.01 * markerRadiusMultiplier;
                 const markerGeometry = new SphereGeometry(markerSize, 16, 16);
                 const markerColorObj = resolvedMarkerColor
@@ -752,7 +779,7 @@ export default function Globe({
                 const markerMaterial = new MeshBasicMaterial({
                     color: markerColorObj,
                 });
-                markerConfig.markers.forEach((marker) => {
+                parsedMarkerConfig.markers.forEach((marker) => {
                     if (
                         !marker ||
                         typeof marker.lat !== "number" ||
@@ -917,6 +944,25 @@ export default function Globe({
             canvas.removeEventListener("mousemove", handleMouseMove);
             resizeObserver.disconnect();
             try {
+                scene.traverse((object: any) => {
+                    if (!object.isMesh && !object.isLine && !object.isPoints && !object.isInstancedMesh) return;
+                    if (object.geometry) {
+                        object.geometry.dispose();
+                    }
+                    if (object.material) {
+                        if (Array.isArray(object.material)) {
+                            object.material.forEach((mat) => {
+                                mat.dispose();
+                                if (mat.map) mat.map.dispose();
+                            });
+                        } else {
+                            object.material.dispose();
+                            if (object.material.map) object.material.map.dispose();
+                        }
+                    }
+                });
+            } catch (e) {}
+            try {
                 renderer.dispose();
                 renderer.forceContextLoss();
             } catch (e) {}
@@ -927,16 +973,12 @@ export default function Globe({
     }, [
         speed,
         smoothing,
-        dots,
+        dotsString,
         fill,
         fillColor,
-        allDots,
-        density,
-        dotSize,
-        dotColor,
         scale,
         stopOnHover,
-        markerConfig,
+        markerConfigString,
         direction,
         initialLatitude,
         initialLongitude,
@@ -964,38 +1006,6 @@ export default function Globe({
         alignItems: "center",
         justifyContent: "center",
     };
-
-    if (error) {
-        return (
-            <div style={containerStyle}>
-                <div
-                    style={{
-                        position: "relative",
-                        width: "100%",
-                        height: "100%",
-                        minWidth: 0,
-                        minHeight: 0,
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        color: "#ffffff",
-                        textAlign: "center",
-                        padding: "16px",
-                        fontFamily:
-                            "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-                    }}
-                >
-                    <div style={{ fontSize: "16px", fontWeight: 600 }}>
-                        Error loading Earth visualization
-                    </div>
-                    <div style={{ fontSize: "13px", opacity: 0.7, marginTop: "4px" }}>
-                        {error}
-                    </div>
-                </div>
-            </div>
-        );
-    }
 
     return <div ref={containerRef} style={containerStyle} />;
 }
