@@ -199,7 +199,6 @@ export default function HomePage() {
             <li><a href="#howitworks" className={`ms-nav-link ${activeSection === 'howitworks' ? 'active' : ''}`} onClick={() => setActiveSection('howitworks')}>PROCESS</a></li>
             <li><a href="#network" className={`ms-nav-link ${activeSection === 'network' ? 'active' : ''}`} onClick={() => setActiveSection('network')}>NETWORK</a></li>
             <li><a href="#quote" className={`ms-nav-link ${activeSection === 'quote' ? 'active' : ''}`} onClick={() => setActiveSection('quote')}>CONTACT</a></li>
-            <li><a href="/admin/login" className="ms-nav-link" style={{ color: 'var(--vibrant-orange)', fontWeight: 700 }}>ADMIN</a></li>
           </ul>
 
           <div className="ms-nav-actions">
