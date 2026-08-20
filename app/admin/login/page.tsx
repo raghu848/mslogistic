@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useAdminAuth } from '@/lib/admin-auth-context';
-import { Shield, Lock, Mail, ArrowRight, AlertCircle, ArrowLeft } from 'lucide-react';
+import { Shield, Lock, Mail, ArrowRight, AlertCircle, ArrowLeft, Eye, EyeOff, KeyRound } from 'lucide-react';
 
 export default function AdminLoginPage() {
   const { user, login } = useAdminAuth();
@@ -12,6 +12,7 @@ export default function AdminLoginPage() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
@@ -27,7 +28,10 @@ export default function AdminLoginPage() {
     e.preventDefault();
     setError(null);
 
-    if (!email.trim() || !password) {
+    const cleanEmail = email.trim();
+    const cleanPassword = password.trim();
+
+    if (!cleanEmail || !cleanPassword) {
       setError('Please enter both your email address and password.');
       return;
     }
@@ -35,7 +39,7 @@ export default function AdminLoginPage() {
     setSubmitting(true);
 
     try {
-      const result = await login(email.trim(), password, rememberMe);
+      const result = await login(cleanEmail, cleanPassword, rememberMe);
 
       if (result.success) {
         window.location.href = '/admin/dashboard';
@@ -47,6 +51,12 @@ export default function AdminLoginPage() {
     } finally {
       setSubmitting(false);
     }
+  };
+
+  const handleFillCredentials = () => {
+    setEmail('admin@mslogistics.com');
+    setPassword('Admin@MSLogistic2026');
+    setError(null);
   };
 
   return (
@@ -85,6 +95,34 @@ export default function AdminLoginPage() {
             </p>
           </div>
 
+          {/* Quick Fill Credentials Banner */}
+          <div
+            onClick={handleFillCredentials}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              padding: '10px 14px',
+              backgroundColor: '#FFF7F4',
+              border: '1px dashed #FF5428',
+              borderRadius: '12px',
+              marginBottom: '20px',
+              cursor: 'pointer',
+              transition: 'all 0.2s ease',
+            }}
+            title="Click to automatically fill default credentials"
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <KeyRound style={{ width: '15px', height: '15px', color: '#FF5428' }} />
+              <span style={{ fontSize: '12px', fontWeight: 600, color: '#FF5428' }}>
+                Default Admin Login
+              </span>
+            </div>
+            <span style={{ fontSize: '11px', fontWeight: 700, color: '#FF5428', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+              Click to Auto-fill
+            </span>
+          </div>
+
           {/* Error Message Box */}
           {error && (
             <div className="ms-admin-error-box">
@@ -119,13 +157,39 @@ export default function AdminLoginPage() {
               <div className="ms-admin-input-wrapper">
                 <Lock className="ms-admin-input-icon" style={{ width: '18px', height: '18px' }} />
                 <input
-                  type="password"
+                  type={showPassword ? 'text' : 'password'}
                   required
                   placeholder="••••••••••••"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="ms-admin-input"
+                  style={{ paddingRight: '48px' }}
                 />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  style={{
+                    position: 'absolute',
+                    right: '14px',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    background: 'transparent',
+                    border: 'none',
+                    padding: 0,
+                    cursor: 'pointer',
+                    color: '#8A9BB4',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
+                >
+                  {showPassword ? (
+                    <EyeOff style={{ width: '18px', height: '18px' }} />
+                  ) : (
+                    <Eye style={{ width: '18px', height: '18px' }} />
+                  )}
+                </button>
               </div>
             </div>
 

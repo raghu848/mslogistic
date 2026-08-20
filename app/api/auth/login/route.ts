@@ -47,9 +47,12 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Update lastLogin timestamp
-    user.lastLogin = new Date();
-    await user.save();
+    // Update lastLogin timestamp safely
+    try {
+      await User.findByIdAndUpdate(user._id, { lastLogin: new Date() });
+    } catch (updateErr) {
+      console.warn('Failed to update lastLogin:', updateErr);
+    }
 
     // Generate JWT
     const token = signToken({
@@ -76,8 +79,9 @@ export async function POST(req: NextRequest) {
     return response;
   } catch (error) {
     console.error('Login error:', error);
+    const msg = error instanceof Error ? error.message : 'An unexpected error occurred during login.';
     return NextResponse.json(
-      { success: false, message: 'An unexpected error occurred during login.' },
+      { success: false, message: msg },
       { status: 500 }
     );
   }
