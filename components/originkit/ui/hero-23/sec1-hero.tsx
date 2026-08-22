@@ -1,8 +1,6 @@
 // Delivered by Originkit · stack: nextjs · styling: tailwind
 "use client";
 
-"use client";
-
 import React, { useState, type CSSProperties } from "react";
 import { MediaGlobe, MediaStardust } from "@/components/originkit/ui/hero-23/media-globe";
 import { ScaleFrame } from "@/components/originkit/ui/hero-23/scale-frame";

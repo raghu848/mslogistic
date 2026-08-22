@@ -1,8 +1,6 @@
 // Delivered by Originkit · stack: nextjs · styling: tailwind
 "use client";
 
-"use client";
-
 import { useEffect, useState, type ComponentProps } from "react";
 import Globe from "@/components/originkit/ui/hero-23/globe";
 import Stardust from "@/components/originkit/ui/hero-23/stardust";
