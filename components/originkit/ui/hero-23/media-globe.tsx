@@ -27,7 +27,8 @@ export const MediaGlobe = ({ query }: { query?: string }) => {
       scale={9.7}
       initialLatitude={18}
       initialLongitude={45}
-      speed={7}
+      speed={6}
+      stopOnHover={false}
       oceanColor="#090D16"
       dots={{ color: "#FF5722", size: 6, density: 8, allDots: false }}
       fillColor="#1C1917"

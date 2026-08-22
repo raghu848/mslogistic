@@ -836,22 +836,37 @@ export default function Globe({
             const dt = Math.min((now - lastTime) / 1000, 0.1);
             lastTime = now;
 
-            if (!isDragging && rotationSpeed !== 0 && (!stopOnHover || !isHovering)) {
-                globeGroup.rotation.y += rotationSpeed * 0.18 * dt;
-            } else if (isDragging || smoothingN > 0) {
-                if (
-                    Math.abs(velocity.x) > 0.0001 ||
-                    Math.abs(velocity.y) > 0.0001
-                ) {
-                    targetRotation.x += velocity.x;
-                    targetRotation.y += velocity.y;
-                    targetRotation.y = Math.max(
+            if (!isDragging) {
+                if (rotationSpeed !== 0 && (!stopOnHover || !isHovering)) {
+                    globeGroup.rotation.y += rotationSpeed * 0.55 * dt;
+                    targetRotation.x = globeGroup.rotation.y;
+                    rotation.x = globeGroup.rotation.y;
+                } else if (smoothingN > 0) {
+                    if (
+                        Math.abs(velocity.x) > 0.0001 ||
+                        Math.abs(velocity.y) > 0.0001
+                    ) {
+                        targetRotation.x += velocity.x;
+                        targetRotation.y += velocity.y;
+                        targetRotation.y = Math.max(
+                            -Math.PI / 2,
+                            Math.min(Math.PI / 2, targetRotation.y)
+                        );
+                        velocity.x *= velocityDecay;
+                        velocity.y *= velocityDecay;
+                    }
+                    const dx = targetRotation.x - rotation.x;
+                    const dy = targetRotation.y - rotation.y;
+                    rotation.x += dx * lerpFactor;
+                    rotation.y += dy * lerpFactor;
+                    rotation.y = Math.max(
                         -Math.PI / 2,
-                        Math.min(Math.PI / 2, targetRotation.y)
+                        Math.min(Math.PI / 2, rotation.y)
                     );
-                    velocity.x *= velocityDecay;
-                    velocity.y *= velocityDecay;
+                    globeGroup.rotation.y = rotation.x;
+                    globeGroup.rotation.x = rotation.y;
                 }
+            } else {
                 const dx = targetRotation.x - rotation.x;
                 const dy = targetRotation.y - rotation.y;
                 rotation.x += dx * lerpFactor;
@@ -907,6 +922,40 @@ export default function Globe({
         };
         canvas.addEventListener("mousedown", handleMouseDown);
 
+        const handleTouchStart = (event: TouchEvent) => {
+            if (event.touches.length !== 1) return;
+            isDragging = true;
+            velocity.x = 0;
+            velocity.y = 0;
+            lastMouseX = event.touches[0].clientX;
+            lastMouseY = event.touches[0].clientY;
+            startAnimation();
+            const handleTouchMove = (moveEvent: TouchEvent) => {
+                if (moveEvent.touches.length !== 1) return;
+                const sensitivity = mapDragSpeedUiToSensitivity(dragSpeed);
+                const dx = moveEvent.touches[0].clientX - lastMouseX;
+                const dy = moveEvent.touches[0].clientY - lastMouseY;
+                targetRotation.x += dx * sensitivity;
+                targetRotation.y += dy * sensitivity;
+                targetRotation.y = Math.max(
+                    -Math.PI / 2,
+                    Math.min(Math.PI / 2, targetRotation.y)
+                );
+                velocity.x = dx * sensitivity * 0.3;
+                velocity.y = dy * sensitivity * 0.3;
+                lastMouseX = moveEvent.touches[0].clientX;
+                lastMouseY = moveEvent.touches[0].clientY;
+            };
+            const handleTouchEnd = () => {
+                document.removeEventListener("touchmove", handleTouchMove);
+                document.removeEventListener("touchend", handleTouchEnd);
+                isDragging = false;
+            };
+            document.addEventListener("touchmove", handleTouchMove, { passive: true });
+            document.addEventListener("touchend", handleTouchEnd);
+        };
+        canvas.addEventListener("touchstart", handleTouchStart, { passive: true });
+
         const raycaster = new Raycaster();
         const mouse = new Vector2();
         const handleMouseMove = (event: MouseEvent) => {
@@ -941,6 +990,7 @@ export default function Globe({
             if (animationFrameId !== null)
                 cancelAnimationFrame(animationFrameId);
             canvas.removeEventListener("mousedown", handleMouseDown);
+            canvas.removeEventListener("touchstart", handleTouchStart);
             canvas.removeEventListener("mousemove", handleMouseMove);
             resizeObserver.disconnect();
             try {

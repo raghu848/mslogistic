@@ -74,39 +74,37 @@ const BUTTON_GRADIENT =
 
 const LightButton = ({
   label,
-  className,
+  className = "",
   href,
 }: {
   label: string;
-  className: string;
+  className?: string;
   href: string;
 }) => (
   <a
     href={href}
-    className={`relative flex shrink-0 cursor-pointer items-center justify-center rounded-[6px] bg-gradient-to-r from-[#FF5722] to-[#F4511E] shadow-[0_4px_20px_rgba(255,87,34,0.4)] transition-all duration-200 hover:scale-[1.02] hover:shadow-[0_8px_25px_rgba(255,87,34,0.6)] ${className}`}
+    className={`group relative inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl bg-gradient-to-r from-[#FF5722] via-[#FF6E40] to-[#F4511E] text-white font-bold text-[14px] sm:text-[15px] tracking-wide uppercase shadow-[0_4px_25px_rgba(255,87,34,0.45)] hover:shadow-[0_8px_32px_rgba(255,87,34,0.65)] hover:scale-[1.03] active:scale-[0.98] transition-all duration-200 ${className}`}
   >
-    <p className="relative shrink-0 whitespace-nowrap text-[15px] font-bold leading-normal tracking-[0.02em] text-white">
-      {label}
-    </p>
+    <span className="whitespace-nowrap">{label}</span>
+    <i className="fa-solid fa-arrow-right text-[12px] opacity-90 transition-transform duration-200 group-hover:translate-x-1"></i>
   </a>
 );
 
 const DarkButton = ({
   label,
-  className,
+  className = "",
   href,
 }: {
   label: string;
-  className: string;
+  className?: string;
   href: string;
 }) => (
   <a
     href={href}
-    className={`relative flex shrink-0 cursor-pointer items-center justify-center rounded-[6px] border border-white/20 bg-gradient-to-r from-[#FF5722] to-[#F4511E] shadow-[0_4px_20px_rgba(255,87,34,0.3)] transition-all duration-200 hover:scale-[1.02] hover:shadow-[0_8px_25px_rgba(255,87,34,0.5)] ${className}`}
+    className={`group relative inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl border border-white/25 bg-white/[0.08] hover:bg-white/[0.16] hover:border-white/40 text-white font-bold text-[14px] sm:text-[15px] tracking-wide uppercase backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:scale-[1.03] active:scale-[0.98] transition-all duration-200 ${className}`}
   >
-    <p className="relative shrink-0 whitespace-nowrap text-[15px] font-bold leading-normal tracking-[0.02em] text-white">
-      {label}
-    </p>
+    <i className="fa-solid fa-location-crosshairs text-[13px] text-[#FF6E40]"></i>
+    <span className="whitespace-nowrap">{label}</span>
   </a>
 );
 
@@ -416,58 +414,160 @@ const LogoStrip = ({
 );
 
 export const Sec1Hero = () => {
-  const [trackInput, setTrackInput] = useState('');
-
-  const handleTrackSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const code = trackInput.trim() || 'MS-884920';
-    if (typeof window !== 'undefined') {
-      window.dispatchEvent(new CustomEvent('ms-track-shipment', { detail: code }));
-    }
-  };
-
   return (
-    <div className="relative w-full min-h-[92vh] bg-gradient-to-b from-[#0F0F0F] via-[#0B1220] to-[#060B16] overflow-hidden text-white pt-36 sm:pt-44 lg:pt-48 pb-16 lg:pb-24 px-4 sm:px-8 lg:px-12 flex items-center justify-center">
-      {/* Centered Ambient Glow */}
+    <div className="relative w-full min-h-[760px] lg:min-h-screen bg-[#0F1117] text-white flex flex-col justify-between overflow-hidden">
+      {/* Ambient background glow */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] sm:w-[800px] lg:w-[1000px] h-[550px] sm:h-[800px] lg:h-[1000px] bg-gradient-to-r from-[#FF5722]/20 via-[#F4511E]/15 to-transparent rounded-full blur-[170px]"></div>
+        <div className="absolute top-1/3 right-1/4 -translate-y-1/2 w-[550px] sm:w-[800px] lg:w-[1000px] h-[550px] sm:h-[800px] lg:h-[1000px] bg-gradient-to-r from-[#FF5A1F]/15 via-[#FF6B35]/10 to-transparent rounded-full blur-[180px]"></div>
       </div>
 
-      {/* Centered Moving 3D Earth Globe */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[540px] md:w-[650px] lg:w-[750px] h-[340px] sm:h-[540px] md:h-[650px] lg:h-[750px] pointer-events-none rounded-full overflow-hidden opacity-90 z-0 shadow-[0_20px_80px_rgba(255,87,34,0.2)]">
-        <MediaGlobe />
+      {/* Main Hero Container: Perfectly matching navbar width: min(1400px, calc(100% - 80px)) */}
+      <div className="relative z-10 w-full pt-32 sm:pt-36 lg:pt-40 pb-8 sm:pb-12 flex-1 flex items-center">
+        <div
+          style={{
+            width: 'min(1400px, calc(100% - 80px))',
+            maxWidth: '1400px',
+            margin: '0 auto',
+          }}
+          className="w-full"
+        >
+          <div className="w-full grid grid-cols-1 lg:grid-cols-[48%_52%] gap-8 lg:gap-10 items-center">
+            
+            {/* LEFT Column (48% width): Hero text + buttons */}
+            <div className="flex flex-col items-start text-left w-full max-w-[600px]">
+              {/* 3. Eyebrow */}
+              <div style={delay(0)} className={`${REVEAL} mb-5`}>
+                <span
+                  style={{ color: '#FF5A1F', letterSpacing: '0.08em' }}
+                  className="text-[12px] font-semibold uppercase opacity-90 block"
+                >
+                  FAST • SAFE • EVERYWHERE
+                </span>
+              </div>
+
+              {/* 4. Main Heading */}
+              <h1
+                style={{
+                  ...delay(150),
+                  color: '#FFFFFF',
+                  textShadow: '0 2px 20px rgba(0, 0, 0, 0.7)',
+                  lineHeight: 1.02,
+                }}
+                className={`${REVEAL} text-[clamp(42px,4.5vw,74px)] font-[800] tracking-[-0.02em] mb-6 text-left`}
+              >
+                <span style={{ color: '#FFFFFF', display: 'block' }}>WE MOVE YOUR</span>
+                <span style={{ color: '#FFFFFF', display: 'block' }}>BUSINESS</span>
+                <span
+                  style={{
+                    color: '#FF5A1F',
+                    display: 'block',
+                    textShadow: '0 4px 25px rgba(255, 90, 31, 0.45)',
+                  }}
+                >
+                  FORWARD.
+                </span>
+              </h1>
+
+              {/* 5. Description: max-w 560px, 18px font, 1.6 line-height, 28px bottom margin */}
+              <p
+                style={{ ...delay(300), color: '#D1D5DB' }}
+                className={`${REVEAL} text-[16px] sm:text-[18px] leading-[1.6] max-w-[560px] mb-8 font-normal`}
+              >
+                Smart, reliable and seamless logistics solutions connecting your cargo to the world with precision and on-time guaranteed delivery.
+              </p>
+
+              {/* 6. CTA Buttons: 52px height, 16px gap */}
+              <div style={delay(450)} className={`${REVEAL} flex flex-wrap items-center gap-4 w-full sm:w-auto`}>
+                <a
+                  href="#quote"
+                  style={{
+                    backgroundColor: '#FF5A1F',
+                    color: '#FFFFFF',
+                    height: '52px',
+                    padding: '0 32px',
+                    borderRadius: '9999px',
+                    fontSize: '14px',
+                    fontWeight: 700,
+                    letterSpacing: '0.03em',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    textDecoration: 'none',
+                    boxShadow: '0 8px 24px rgba(255,90,31,0.35)',
+                    whiteSpace: 'nowrap',
+                    transition: 'all 0.25s ease',
+                  }}
+                  className="hover:-translate-y-0.5 active:translate-y-0 hover:bg-[#FF6B35] w-full sm:w-auto"
+                >
+                  <span>GET A QUOTE</span>
+                  <span style={{ fontSize: '16px' }}>→</span>
+                </a>
+                <a
+                  href="#services"
+                  style={{
+                    backgroundColor: 'transparent',
+                    color: '#FFFFFF',
+                    border: '1.5px solid rgba(255, 255, 255, 0.85)',
+                    height: '52px',
+                    padding: '0 32px',
+                    borderRadius: '9999px',
+                    fontSize: '14px',
+                    fontWeight: 700,
+                    letterSpacing: '0.03em',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    textDecoration: 'none',
+                    whiteSpace: 'nowrap',
+                    transition: 'all 0.25s ease',
+                  }}
+                  className="hover:bg-white/10 hover:-translate-y-0.5 active:translate-y-0 w-full sm:w-auto"
+                >
+                  <span>TRACK SHIPMENT</span>
+                </a>
+              </div>
+            </div>
+
+            {/* RIGHT Column (52% width): 8. 3D Globe Canvas */}
+            <div className="flex items-center justify-center relative w-full h-[360px] sm:h-[460px] md:h-[520px] lg:h-[580px] xl:h-[640px] overflow-hidden">
+              <div className="relative w-full h-full max-w-[620px] aspect-square flex items-center justify-center rounded-full overflow-hidden drop-shadow-[0_20px_60px_rgba(255,90,31,0.2)]">
+                <MediaGlobe />
+              </div>
+            </div>
+
+          </div>
+        </div>
       </div>
 
-      {/* Centered Hero Content Container (Foreground Overlay Layer) */}
-      <div className="relative z-10 max-w-4xl w-full mx-auto flex flex-col items-center text-center gap-6 sm:gap-7">
-        <Badge step={0} />
-
-        <h1
-          style={delay(150)}
-          className={`${REVEAL} text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight sm:leading-none drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)]`}
+      {/* 9 & 10. Hero Statistics Bar (Bottom, Evenly Distributed across 4 Columns in matching centered container) */}
+      <div className="relative z-10 w-full border-t border-white/10 bg-gradient-to-t from-[#090C12] via-[#0F1117]/90 to-transparent py-7 sm:py-9">
+        <div
+          style={{
+            width: 'min(1400px, calc(100% - 80px))',
+            maxWidth: '1400px',
+            margin: '0 auto',
+          }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-4 divide-y md:divide-y-0 md:divide-x divide-white/10"
         >
-          <span className="text-white drop-shadow-md">WE MOVE YOUR </span>
-          <br className="hidden sm:inline" />
-          <span className="text-white drop-shadow-md">BUSINESS </span>
-          <span
-            style={{
-              color: '#FF5722',
-              backgroundImage: 'linear-gradient(135deg, #FF6E40 0%, #FF3D00 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              filter: 'drop-shadow(0 2px 10px rgba(255, 87, 34, 0.4))',
-            }}
-          >
-            FORWARD.
-          </span>
-        </h1>
-
-        <p
-          style={delay(300)}
-          className={`${REVEAL} text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed font-bold px-2 text-slate-100 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]`}
-        >
-          Smart, reliable and seamless logistics solutions connecting your cargo to the world with precision and on-time guaranteed delivery.
-        </p>
+          <div className="text-center py-2 md:py-0 md:px-4">
+            <div className="text-[28px] sm:text-[32px] font-bold text-white leading-none">10+</div>
+            <div className="text-[13px] text-[#9CA3AF] mt-2 font-medium">Years Experience</div>
+          </div>
+          <div className="text-center py-2 md:py-0 md:px-4">
+            <div className="text-[28px] sm:text-[32px] font-bold text-white leading-none">50K+</div>
+            <div className="text-[13px] text-[#9CA3AF] mt-2 font-medium">Shipments Handled</div>
+          </div>
+          <div className="text-center py-2 md:py-0 md:px-4">
+            <div className="text-[28px] sm:text-[32px] font-bold text-white leading-none">98.2%</div>
+            <div className="text-[13px] text-[#9CA3AF] mt-2 font-medium">On-Time Delivery</div>
+          </div>
+          <div className="text-center py-2 md:py-0 md:px-4">
+            <div className="text-[28px] sm:text-[32px] font-bold text-white leading-none">24/7</div>
+            <div className="text-[13px] text-[#9CA3AF] mt-2 font-medium">Support Available</div>
+          </div>
+        </div>
       </div>
     </div>
   );

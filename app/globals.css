@@ -277,49 +277,54 @@ img {
 
 .ms-navbar {
   position: fixed;
-  top: 24px;
+  top: 20px;
   left: 0;
   right: 0;
   width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
   z-index: 99999 !important;
-  padding: 0 32px;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
   animation: navSlideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  transition: top 0.3s ease, padding 0.3s ease;
+  transition: top 0.3s ease;
   will-change: transform, opacity;
 }
- 
+
 .ms-nav-container {
+  pointer-events: auto;
+  width: min(1400px, calc(100% - 80px));
+  height: 80px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background: #FFFFFF !important;
-  border: 1px solid var(--orange-border) !important;
-  border-radius: 40px;
-  height: 72px;
-  padding: 0 32px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  border-radius: 50px;
+  padding: 0 36px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
   position: relative;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
  
 .ms-navbar.scrolled .ms-nav-container {
   background: #FFFFFF !important;
-  border-color: var(--vibrant-orange) !important;
-  box-shadow: 0 15px 45px rgba(255, 84, 40, 0.1);
-  padding: 0 28px;
+  border-color: rgba(255, 90, 31, 0.25) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
  
 .ms-logo-img {
-  height: 44px;
+  height: 48px;
   width: auto;
   object-fit: contain;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
  
 .ms-logo-img:hover {
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
  
 .ms-nav-menu {
@@ -327,32 +332,35 @@ img {
   align-items: center;
   gap: 28px;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
  
 .ms-nav-link {
-  font-family: var(--font-heading);
-  font-size: 0.95rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.02em;
-  color: var(--text-dark) !important;
+  color: #1F2937 !important;
   position: relative;
   padding: 6px 0;
+  white-space: nowrap;
   transition: color 0.25s ease;
 }
  
 .ms-nav-link:hover,
 .ms-nav-link.active {
-  color: var(--vibrant-orange) !important;
+  color: #FF5A1F !important;
 }
  
 .ms-nav-link::after {
   content: '';
   position: absolute;
-  bottom: -2px;
+  bottom: -4px;
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--vibrant-orange);
+  background: #FF5A1F;
   border-radius: 2px;
   transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -362,11 +370,53 @@ img {
   width: 100%;
 }
  
-/* Minimal Action Buttons */
+/* Action Buttons */
 .ms-nav-actions {
   display: flex;
   align-items: center;
   gap: 12px;
+}
+
+@media (max-width: 1280px) {
+  .ms-nav-container {
+    padding: 0 28px;
+  }
+  .ms-nav-menu {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .ms-nav-container {
+    padding: 0 20px;
+  }
+  .ms-nav-menu {
+    gap: 14px;
+  }
+  .ms-nav-link {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 960px) {
+  .ms-navbar {
+    top: 12px;
+  }
+  .ms-nav-container {
+    width: calc(100% - 32px);
+    height: 68px;
+    padding: 0 18px;
+  }
+  .ms-nav-menu {
+    display: none !important;
+  }
+  .ms-nav-actions .ms-btn-admin-pill,
+  .ms-nav-actions .ms-btn-minimal-quote {
+    display: none !important;
+  }
+  .ms-mobile-toggle {
+    display: flex !important;
+  }
 }
  
 .ms-btn-minimal-track {

@@ -257,41 +257,9 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* 2. HERO SECTION (OriginKit Hero 23 Theme with 3D Globe & Interactive Stardust) */}
-      <section id="hero" className="w-full relative overflow-hidden bg-[#0F0F0F]">
+      {/* 2. HERO SECTION (Redesigned Enterprise Hero with 3D Globe, Tracking & Stats) */}
+      <section id="hero" className="w-full relative overflow-hidden bg-[#0F1117]">
         <Hero23 />
-      </section>
-
-      {/* 3. TRUST / STATS SECTION */}
-      <section className="ms-stats-bar" id="stats" style={{ background: 'var(--navy-dark)', borderBottom: '1px solid var(--border-dark)', borderTop: '1px solid var(--border-dark)', padding: '30px 0' }}>
-        <div className="ms-container">
-          <div className="ms-stats-grid">
-            <div className="ms-stat-item ms-reveal">
-              <div className="ms-stat-number" style={{ color: 'var(--vibrant-orange)' }}>
-                {statsAnimated ? `${counters.exp}+` : '10+'}
-              </div>
-              <div className="ms-stat-label" style={{ color: '#D1D5DB' }}>Years Industry Experience</div>
-            </div>
-            <div className="ms-stat-item ms-reveal ms-delay-100">
-              <div className="ms-stat-number" style={{ color: 'var(--vibrant-orange)' }}>
-                {statsAnimated ? `${counters.countries}+` : '50+'}
-              </div>
-              <div className="ms-stat-label" style={{ color: '#D1D5DB' }}>Countries Globally Served</div>
-            </div>
-            <div className="ms-stat-item ms-reveal ms-delay-200">
-              <div className="ms-stat-number" style={{ color: 'var(--vibrant-orange)' }}>
-                {statsAnimated ? `${counters.shipments}K+` : '10K+'}
-              </div>
-              <div className="ms-stat-label" style={{ color: '#D1D5DB' }}>Shipments Delivered</div>
-            </div>
-            <div className="ms-stat-item ms-reveal ms-delay-300">
-              <div className="ms-stat-number" style={{ color: 'var(--vibrant-orange)' }}>
-                {statsAnimated ? `${counters.onTime}%` : '99%'}
-              </div>
-              <div className="ms-stat-label" style={{ color: '#D1D5DB' }}>On-Time Delivery Rate</div>
-            </div>
-          </div>
-        </div>
       </section>
 
       {/* 4. ABOUT MS LOGISTICS */}
