@@ -71,6 +71,23 @@ export default function HomePage() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Lock scroll & handle Escape key when mobile drawer is open
+  useEffect(() => {
+    if (mobileDrawerOpen) {
+      document.body.style.overflow = 'hidden';
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') setMobileDrawerOpen(false);
+      };
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        document.body.style.overflow = '';
+        window.removeEventListener('keydown', handleKeyDown);
+      };
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [mobileDrawerOpen]);
+
   // Single-run stats counter observer
   useEffect(() => {
     const statsEl = document.getElementById('stats');
@@ -186,34 +203,36 @@ export default function HomePage() {
   return (
     <div className="ms-app-wrapper">
       {/* 1. FUTURISTIC STICKY NAVBAR (FLOATING HUD PILL DESIGN) */}
-      <nav className={`ms-navbar ${scrolled ? 'scrolled' : ''}`} id="navbar">
+      <nav className={`ms-navbar ${scrolled ? 'scrolled' : ''}`} id="navbar" aria-label="Main Navigation">
         <div className="ms-nav-container">
-          <a href="#hero" className="ms-logo" id="navLogo">
+          <a href="#hero" className="ms-logo" id="navLogo" aria-label="MS LOGISTIC Home">
             <img src="/images/ms_logo.png" alt="MS LOGISTIC - Fast Safe Everywhere" className="ms-logo-img" />
           </a>
 
-          <ul className="ms-nav-menu" id="navMenu">
-            <li><a href="#hero" className={`ms-nav-link ${activeSection === 'hero' ? 'active' : ''}`} onClick={() => setActiveSection('hero')}>HOME</a></li>
-            <li><a href="#about" className={`ms-nav-link ${activeSection === 'about' ? 'active' : ''}`} onClick={() => setActiveSection('about')}>ABOUT</a></li>
-            <li><a href="#services" className={`ms-nav-link ${activeSection === 'services' ? 'active' : ''}`} onClick={() => setActiveSection('services')}>SERVICES</a></li>
-            <li><a href="#howitworks" className={`ms-nav-link ${activeSection === 'howitworks' ? 'active' : ''}`} onClick={() => setActiveSection('howitworks')}>PROCESS</a></li>
-            <li><a href="#network" className={`ms-nav-link ${activeSection === 'network' ? 'active' : ''}`} onClick={() => setActiveSection('network')}>NETWORK</a></li>
-            <li><a href="#quote" className={`ms-nav-link ${activeSection === 'quote' ? 'active' : ''}`} onClick={() => setActiveSection('quote')}>CONTACT</a></li>
+          <ul className="ms-nav-menu" id="navMenu" role="menubar">
+            <li role="none"><a href="#hero" role="menuitem" className={`ms-nav-link ${activeSection === 'hero' ? 'active' : ''}`} onClick={() => setActiveSection('hero')}>HOME</a></li>
+            <li role="none"><a href="#about" role="menuitem" className={`ms-nav-link ${activeSection === 'about' ? 'active' : ''}`} onClick={() => setActiveSection('about')}>ABOUT</a></li>
+            <li role="none"><a href="#services" role="menuitem" className={`ms-nav-link ${activeSection === 'services' ? 'active' : ''}`} onClick={() => setActiveSection('services')}>SERVICES</a></li>
+            <li role="none"><a href="#howitworks" role="menuitem" className={`ms-nav-link ${activeSection === 'howitworks' ? 'active' : ''}`} onClick={() => setActiveSection('howitworks')}>PROCESS</a></li>
+            <li role="none"><a href="#network" role="menuitem" className={`ms-nav-link ${activeSection === 'network' ? 'active' : ''}`} onClick={() => setActiveSection('network')}>NETWORK</a></li>
+            <li role="none"><a href="#quote" role="menuitem" className={`ms-nav-link ${activeSection === 'quote' ? 'active' : ''}`} onClick={() => setActiveSection('quote')}>CONTACT</a></li>
           </ul>
 
           <div className="ms-nav-actions">
-            <a href="/admin/login" className="ms-btn-admin-pill" id="navAdminBtn">
+            <a href="/admin/login" className="ms-btn-admin-pill" id="navAdminBtn" aria-label="Admin Login">
               <i className="fa-solid fa-shield-halved"></i>
               <span>Admin Login</span>
             </a>
-            <a href="#quote" className="ms-btn-minimal-quote" id="navQuoteBtn">
+            <a href="#quote" className="ms-btn-minimal-quote" id="navQuoteBtn" aria-label="Get a Quote">
               <span>GET A QUOTE</span>
               <i className="fa-solid fa-arrow-right" style={{ fontSize: '0.8rem' }}></i>
             </a>
             <button
               className="ms-mobile-toggle"
               id="mobileToggle"
-              aria-label="Toggle Navigation Menu"
+              aria-label="Open Navigation Menu"
+              aria-expanded={mobileDrawerOpen}
+              aria-controls="mobileDrawer"
               onClick={() => setMobileDrawerOpen(true)}
             >
               <i className="fa-solid fa-bars-staggered"></i>
@@ -224,12 +243,22 @@ export default function HomePage() {
 
       {/* Mobile Navigation Drawer */}
       <div
-        className={`ms-overlay ${mobileDrawerOpen ? 'active' : ''}`}
+        className={`ms-overlay ${mobileDrawerOpen ? 'open active' : ''}`}
+        id="navOverlay"
         onClick={() => setMobileDrawerOpen(false)}
+        aria-hidden={!mobileDrawerOpen}
       ></div>
-      <div className={`ms-mobile-drawer ${mobileDrawerOpen ? 'active' : ''}`}>
+      <div
+        className={`ms-mobile-drawer ${mobileDrawerOpen ? 'open active' : ''}`}
+        id="mobileDrawer"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile Navigation Menu"
+        aria-hidden={!mobileDrawerOpen}
+      >
         <button
           className="ms-mobile-close"
+          id="mobileClose"
           aria-label="Close Navigation Menu"
           onClick={() => setMobileDrawerOpen(false)}
         >

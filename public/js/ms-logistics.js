@@ -25,27 +25,47 @@ function initNavbar() {
 
   // Sticky Scroll
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
+    if (navbar) {
+      if (window.scrollY > 40) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
     }
   });
 
   // Mobile Drawer Toggle
   if (toggleBtn && drawer) {
-    toggleBtn.addEventListener('click', () => {
-      drawer.classList.add('open');
-      overlay.classList.add('active');
-    });
-
-    const closeDrawer = () => {
-      drawer.classList.remove('open');
-      overlay.classList.remove('active');
+    const openDrawer = () => {
+      drawer.classList.add('open', 'active');
+      overlay?.classList.add('active', 'open');
+      toggleBtn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
     };
 
+    const closeDrawer = () => {
+      drawer.classList.remove('open', 'active');
+      overlay?.classList.remove('active', 'open');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    };
+
+    toggleBtn.addEventListener('click', openDrawer);
     closeBtn?.addEventListener('click', closeDrawer);
     overlay?.addEventListener('click', closeDrawer);
+
+    // Close when clicking any nav link inside drawer
+    const drawerLinks = drawer.querySelectorAll('a, button:not(.ms-mobile-close)');
+    drawerLinks.forEach(link => {
+      link.addEventListener('click', closeDrawer);
+    });
+
+    // Close on Escape key press
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && drawer.classList.contains('open')) {
+        closeDrawer();
+      }
+    });
   }
 
   // Active Navigation Link on Scroll

@@ -281,20 +281,20 @@ img {
   left: 0;
   right: 0;
   width: 100%;
-  z-index: 99999 !important;
+  z-index: 1000 !important;
   pointer-events: none;
   display: flex;
   justify-content: center;
   padding: 0;
   margin: 0;
   animation: navSlideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  transition: top 0.3s ease;
+  transition: top 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, opacity;
 }
 
 .ms-nav-container {
   pointer-events: auto;
-  width: min(1400px, calc(100% - 80px));
+  width: min(1400px, calc(100% - 64px));
   height: 80px;
   margin: 0 auto;
   display: flex;
@@ -303,24 +303,37 @@ img {
   background: #FFFFFF !important;
   border: 1px solid rgba(0, 0, 0, 0.08) !important;
   border-radius: 50px;
-  padding: 0 36px;
+  padding: 0 32px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   box-sizing: border-box;
   position: relative;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  gap: 16px;
 }
  
 .ms-navbar.scrolled .ms-nav-container {
   background: #FFFFFF !important;
   border-color: rgba(255, 90, 31, 0.25) !important;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  height: 72px;
+}
+
+.ms-logo {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  text-decoration: none;
+  min-height: 44px;
+  min-width: 44px;
 }
  
 .ms-logo-img {
   height: 48px;
   width: auto;
+  max-width: 100%;
   object-fit: contain;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
 }
  
 .ms-logo-img:hover {
@@ -330,20 +343,24 @@ img {
 .ms-nav-menu {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: clamp(10px, 1.8vw, 28px);
   list-style: none;
   margin: 0;
   padding: 0;
+  flex-shrink: 1;
 }
  
 .ms-nav-link {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 14px;
+  font-size: clamp(12px, 0.95vw, 14px);
   font-weight: 600;
   letter-spacing: 0.02em;
   color: #1F2937 !important;
   position: relative;
-  padding: 6px 0;
+  padding: 8px 4px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   white-space: nowrap;
   transition: color 0.25s ease;
 }
@@ -356,7 +373,7 @@ img {
 .ms-nav-link::after {
   content: '';
   position: absolute;
-  bottom: -4px;
+  bottom: 6px;
   left: 0;
   width: 0;
   height: 2px;
@@ -374,48 +391,156 @@ img {
 .ms-nav-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  flex-shrink: 0;
 }
 
+/* Tablet & Desktop Responsive Scaling */
 @media (max-width: 1280px) {
   .ms-nav-container {
-    padding: 0 28px;
+    width: min(1200px, calc(100% - 48px));
+    padding: 0 24px;
+    height: 74px;
   }
   .ms-nav-menu {
-    gap: 20px;
+    gap: clamp(10px, 1.4vw, 18px);
+  }
+  .ms-logo-img {
+    height: 44px;
   }
 }
 
-@media (max-width: 1080px) {
-  .ms-nav-container {
-    padding: 0 20px;
-  }
-  .ms-nav-menu {
-    gap: 14px;
-  }
-  .ms-nav-link {
-    font-size: 13px;
-  }
-}
-
-@media (max-width: 960px) {
+@media (max-width: 1024px) {
   .ms-navbar {
-    top: 12px;
+    top: 14px;
   }
   .ms-nav-container {
     width: calc(100% - 32px);
+    padding: 0 16px;
     height: 68px;
-    padding: 0 18px;
+    gap: 8px;
+  }
+  .ms-nav-menu {
+    gap: clamp(8px, 1vw, 12px);
+  }
+  .ms-nav-link {
+    font-size: 12.5px;
+    padding: 6px 2px;
+  }
+  .ms-logo-img {
+    height: 40px;
+  }
+  .ms-btn-admin-pill {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    min-height: 40px;
+  }
+  .ms-btn-admin-pill span {
+    display: none;
+  }
+  .ms-btn-minimal-quote {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    min-height: 40px;
+  }
+}
+
+/* Tablet Portrait (768px - 899px): Full horizontal navigation kept clean */
+@media (min-width: 768px) and (max-width: 899.98px) {
+  .ms-nav-container {
+    width: calc(100% - 20px);
+    padding: 0 12px;
+    height: 64px;
+    gap: 6px;
+  }
+  .ms-nav-menu {
+    gap: 6px;
+  }
+  .ms-nav-link {
+    font-size: 11.5px;
+    padding: 4px 2px;
+    letter-spacing: 0;
+  }
+  .ms-logo-img {
+    height: 36px;
+  }
+  .ms-btn-admin-pill {
+    display: none !important;
+  }
+  .ms-btn-minimal-quote {
+    padding: 7px 12px;
+    font-size: 0.75rem;
+    min-height: 38px;
+  }
+}
+
+/* Mobile Breakpoint (Below 768px): Collapse nav links into hamburger toggle */
+@media (max-width: 767.98px) {
+  .ms-navbar {
+    top: 10px;
+  }
+  .ms-nav-container {
+    width: calc(100% - 24px);
+    height: 62px;
+    padding: 0 16px;
+    border-radius: 40px;
   }
   .ms-nav-menu {
     display: none !important;
   }
-  .ms-nav-actions .ms-btn-admin-pill,
-  .ms-nav-actions .ms-btn-minimal-quote {
+  .ms-nav-actions .ms-btn-admin-pill {
     display: none !important;
   }
   .ms-mobile-toggle {
-    display: flex !important;
+    display: inline-flex !important;
+  }
+  .ms-logo-img {
+    height: 38px;
+  }
+  .ms-btn-minimal-quote {
+    padding: 8px 14px;
+    font-size: 0.75rem;
+    min-height: 40px;
+  }
+}
+
+/* Mobile Small (375px) */
+@media (max-width: 480px) {
+  .ms-navbar {
+    top: 8px;
+  }
+  .ms-nav-container {
+    width: calc(100% - 16px);
+    height: 58px;
+    padding: 0 12px;
+  }
+  .ms-logo-img {
+    height: 34px;
+  }
+  .ms-btn-minimal-quote {
+    padding: 6px 10px;
+    font-size: 0.7rem;
+    min-height: 38px;
+  }
+}
+
+/* Mobile Extra Small (320px) */
+@media (max-width: 340px) {
+  .ms-nav-container {
+    width: calc(100% - 10px);
+    height: 54px;
+    padding: 0 8px;
+  }
+  .ms-logo-img {
+    height: 30px;
+  }
+  .ms-btn-minimal-quote {
+    display: none !important;
+  }
+  .ms-mobile-toggle {
+    min-width: 44px;
+    min-height: 44px;
+    font-size: 1.2rem;
   }
 }
  
@@ -555,73 +680,139 @@ img {
 .ms-mobile-toggle {
   display: none;
   background: transparent;
-  color: var(--text-dark);
-  font-size: 1.5rem;
-  padding: 8px;
+  border: none;
+  color: #10182B;
+  font-size: 1.35rem;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.ms-mobile-toggle:hover {
+  color: #FF5A1F;
+  background: rgba(255, 87, 34, 0.08);
+}
+
+.ms-mobile-toggle:focus-visible {
+  outline: 2px solid #FF5A1F;
+  outline-offset: 2px;
 }
 
 /* Mobile Nav Drawer */
 .ms-mobile-drawer {
   position: fixed;
   top: 0;
-  right: -100%;
-  width: 80%;
-  max-width: 380px;
+  right: 0;
+  bottom: 0;
+  width: 85%;
+  max-width: 360px;
   height: 100vh;
-  background: var(--navy-main);
-  border-left: 1px solid var(--border-dark);
-  z-index: 1050;
-  padding: 80px 32px 32px 32px;
+  height: 100dvh;
+  background: #0B1221;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 100001;
+  padding: 24px 20px 28px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateX(100%);
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s ease;
+  will-change: transform;
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
-.ms-mobile-drawer.open {
-  right: 0;
+.ms-mobile-drawer.open,
+.ms-mobile-drawer.active {
+  transform: translateX(0);
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .ms-mobile-close {
   position: absolute;
-  top: 24px;
-  right: 24px;
-  background: transparent;
-  color: var(--text-white);
-  font-size: 1.5rem;
+  top: 16px;
+  right: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  color: #FFFFFF;
+  font-size: 1.25rem;
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.ms-mobile-close:hover,
+.ms-mobile-close:focus-visible {
+  background: rgba(255, 87, 34, 0.25);
+  border-color: #FF5722;
+  color: #FF5722;
+  transform: rotate(90deg);
 }
 
 .ms-mobile-links {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 4px;
   list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
 }
 
 .ms-mobile-link {
-  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 14px;
+  font-size: 1rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.85);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
 }
 
-.ms-mobile-link:hover {
-  color: var(--vibrant-orange);
+.ms-mobile-link:hover,
+.ms-mobile-link.active,
+.ms-mobile-link:focus-visible {
+  color: #FF5722;
+  background: rgba(255, 87, 34, 0.12);
+  padding-left: 18px;
 }
 
 .ms-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
-  z-index: 1040;
+  background: rgba(6, 11, 22, 0.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 100000;
   opacity: 0;
   visibility: hidden;
-  transition: var(--transition-normal);
+  pointer-events: none;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s ease;
 }
 
-.ms-overlay.active {
+.ms-overlay.active,
+.ms-overlay.open {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
 }
 
 /* ==========================================================================
@@ -2068,14 +2259,6 @@ body {
 }
 
 @media (max-width: 1024px) {
-  .ms-navbar {
-    top: 10px;
-  }
-
-  .ms-nav-menu {
-    gap: 16px;
-  }
-
   .ms-hero-grid,
   .ms-about-grid {
     grid-template-columns: 1fr;
@@ -2117,12 +2300,10 @@ body {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767.98px) {
   .ms-section {
     padding: 60px 0;
   }
-
-
 
   .ms-desktop-video {
     display: none !important;
@@ -2150,14 +2331,6 @@ body {
   .ms-hubs-grid {
     grid-template-columns: 1fr;
     gap: 16px;
-  }
-
-  .ms-nav-menu {
-    display: none;
-  }
-
-  .ms-mobile-toggle {
-    display: block;
   }
 
   .ms-btn-minimal-track {
