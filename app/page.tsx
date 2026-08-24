@@ -839,7 +839,7 @@ export default function HomePage() {
             <h2 className="ms-pfaq-title">WE HAVE ANSWERS</h2>
           </div>
 
-          <div className="ms-pfaq-list">
+          <div className="ms-pfaq-list ms-reveal ms-delay-100">
             {[
               {
                 q: 'What shipping modes does MS LOGISTIC offer?',
@@ -866,7 +866,7 @@ export default function HomePage() {
                 a: 'MS LOGISTIC operates a global logistics network spanning major trade routes across Asia, Europe, the Americas, the Middle East, and Africa. Our partner network ensures reliable coverage to virtually any destination worldwide.',
               },
             ].map((item, idx) => (
-              <div key={idx} className={`ms-pfaq-item ms-reveal ms-delay-${Math.min(idx * 50 + 100, 400)} ${activeFaq === idx ? 'ms-pfaq-active' : ''}`}>
+              <div key={idx} className={`ms-pfaq-item ${activeFaq === idx ? 'ms-pfaq-active' : ''}`}>
                 <button className="ms-pfaq-question" onClick={() => setActiveFaq(activeFaq === idx ? null : idx)}>
                   <span>{item.q}</span>
                   <i className={`fa-solid fa-chevron-${activeFaq === idx ? 'up' : 'down'} ms-pfaq-arrow`}></i>
