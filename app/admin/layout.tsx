@@ -113,7 +113,7 @@ function AdminLayoutInner({ children }: { children: React.ReactNode }) {
           <div className="ms-admin-brand-box">
             <Link href="/admin/dashboard" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
               <img
-                src="/images/ms_logo.png"
+                src="/logo.png"
                 alt="MS LOGISTIC"
                 className="ms-admin-logo-img"
               />

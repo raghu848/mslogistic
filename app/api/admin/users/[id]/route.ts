@@ -4,6 +4,8 @@ import { connectDB } from '@/lib/db';
 import User from '@/lib/models/User';
 import mongoose from 'mongoose';
 
+export const dynamic = 'force-dynamic';
+
 interface RouteContext {
   params: Promise<{ id: string }>;
 }

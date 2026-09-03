@@ -3,6 +3,8 @@ import { authenticateRequest, authorizeRoles } from '@/lib/auth';
 import { connectDB } from '@/lib/db';
 import ContactInquiry from '@/lib/models/ContactInquiry';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(req: NextRequest) {
   const auth = await authenticateRequest(req);
   if (!auth.success) {

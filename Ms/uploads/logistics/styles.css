@@ -86,94 +86,6 @@ a {
   margin: 0 auto;
   padding: 0 32px;
 }
-/* CSS for Modern Logistics Theme matching the reference screenshot */
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700&display=swap');
-
-:root,
-:root[data-theme="light"] {
-  --primary-navy: #0b1528;
-  --secondary-navy: #152238;
-  --accent-orange: #f97415;
-  --accent-blue: #1c4ed8;
-
-  --bg-main: #f8fafc;
-  --bg-surface: #ffffff;
-  --bg-inverted: #0b1528;
-  --bg-glass: rgba(255, 255, 255, 0.4);
-
-  --text-main: #1e293b;
-  --text-muted: #64748b;
-  --text-heading: #0b1528;
-  --text-inverted: #ffffff;
-  --border-color: #e2e8f0;
-
-  --font-heading: 'Raleway', sans-serif;
-  --font-body: 'Open Sans', sans-serif;
-}
-
-:root[data-theme="dark"] {
-  --bg-main: #020617;
-  --bg-surface: #0f172a;
-  --bg-inverted: #0f172a;
-  --bg-glass: rgba(15, 23, 42, 0.4);
-
-  --text-main: #e2e8f0;
-  --text-muted: #94a3b8;
-  --text-heading: #ffffff;
-  --text-inverted: #ffffff;
-
-  --border-color: rgba(255, 255, 255, 0.1);
-}
-
-body {
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.preload * {
-  transition: none !important;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: var(--font-body);
-  color: var(--text-main);
-  background-color: var(--bg-main);
-  line-height: 1.65;
-  overflow-x: hidden;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-heading);
-  line-height: 1.15;
-  font-weight: 600;
-}
-
-/* Global section heading: 48px medium — hero h1 overrides this below */
-h2 {
-  font-size: 40px;
-  font-weight: 500;
-}
-
-a {
-  text-decoration: none;
-}
-
-.container {
-  width: 100%;
-  max-width: 1450px;
-  margin: 0 auto;
-  padding: 0 32px;
-}
 
 .relative {
   position: relative;
@@ -189,11 +101,11 @@ a {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  background: #ffffff;
+  background: rgba(11, 21, 40, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid #e2e8f0;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
 }
 
 .navbar {
@@ -216,7 +128,7 @@ a {
   font-family: var(--font-heading);
   font-size: 24px;
   font-weight: 700;
-  color: var(--text-heading);
+  color: var(--text-inverted);
 }
 
 .logo-icon {
@@ -254,17 +166,16 @@ a {
 }
 
 .nav-links a {
-  color: #1e293b;
+  color: var(--text-inverted);
   font-size: 15.2px;
-  font-weight: 600;
+  font-weight: 500;
   display: flex;
   align-items: center;
   gap: 4px;
   transition: color 0.3s;
 }
 
-.nav-links a:hover,
-.nav-links a.active {
+.nav-links a:hover {
   color: var(--accent-orange);
 }
 
@@ -280,7 +191,7 @@ a {
   background: none;
   border: none;
   cursor: pointer;
-  color: #0b1528;
+  color: var(--text-inverted);
   font-size: 24px;
   padding: 4px;
   line-height: 1;
@@ -290,8 +201,8 @@ a {
 .mobile-nav {
   display: none;
   width: 100%;
-  background: #ffffff;
-  border-top: 1px solid #e2e8f0;
+  background: rgba(11, 21, 40, 0.98);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   overflow: hidden;
   z-index: 200;
 }
@@ -304,9 +215,9 @@ a {
 .mobile-nav ul li a {
   display: block;
   padding: 12px 24px;
-  color: #1e293b;
+  color: var(--text-inverted);
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   font-family: var(--font-body);
   transition: background 0.2s, color 0.2s;
 }
@@ -331,7 +242,7 @@ a {
 .social-icons {
   display: flex;
   gap: 16px;
-  color: var(--text-main);
+  color: var(--text-inverted);
 }
 
 .social-icons i {
@@ -344,8 +255,8 @@ a {
 }
 
 .btn-quote {
-  background: #0b1528;
-  color: #ffffff;
+  background: var(--bg-surface);
+  color: var(--text-heading);
   padding: 10px 16px 10px 20px;
   border-radius: 8px;
   font-weight: 600;
@@ -358,10 +269,8 @@ a {
 }
 
 .btn-quote:hover {
-  background: var(--accent-orange);
-  color: #ffffff;
   transform: translateY(-3px);
-  box-shadow: 0 10px 15px -3px rgba(249, 116, 21, 0.3);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
 .btn-quote .icon-circle {
@@ -1590,9 +1499,9 @@ a {
 
 /* Theme Toggle Button */
 .theme-toggle {
-  background: #f1f5f9;
-  border: 1px solid #cbd5e1;
-  color: #0b1528;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -1605,7 +1514,7 @@ a {
 }
 
 .theme-toggle:hover {
-  background: #e2e8f0;
+  background: rgba(255, 255, 255, 0.1);
   color: var(--accent-orange);
 }
 
@@ -1736,7 +1645,7 @@ a {
 }
 
 /* ============================================================
-   WHY MS LOGISTIC  LIGHT THEME SECTION
+   WHY MS LOGISTIC � LIGHT THEME SECTION
    ============================================================ */
 
 .why-section {

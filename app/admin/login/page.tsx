@@ -83,7 +83,7 @@ export default function AdminLoginPage() {
           {/* Logo & Headline */}
           <div style={{ textAlign: 'center', marginBottom: '24px' }}>
             <img
-              src="/images/ms_logo.png"
+              src="/logo.png"
               alt="MS LOGISTIC"
               className="ms-admin-login-logo"
             />

@@ -12,10 +12,10 @@ export const metadata: Metadata = {
     title: 'MS LOGISTIC | Fast • Safe • Everywhere',
     description:
       'Dependable B2B logistics, ocean freight, air freight, warehousing, and customs clearance connecting your cargo to the world.',
-    images: ['/images/ms_logo.png'],
+    images: ['/logo.png'],
   },
   icons: {
-    icon: '/images/ms_logo.png',
+    icon: '/logo.png',
   },
 };
 
@@ -30,12 +30,22 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Raleway:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
           rel="stylesheet"
         />
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        />
+        <script src="https://unpkg.com/@phosphor-icons/web" async></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+              }
+            `,
+          }}
         />
       </head>
       <body suppressHydrationWarning>{children}</body>

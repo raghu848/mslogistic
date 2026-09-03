@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MS Logistic - International Freight Forwarding</title>
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="responsive.css">
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
+    <template id="__bundler_thumbnail" data-bg-color="#0b1528">
+        <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+            <rect width="1200" height="800" fill="#0b1528"/>
+            <circle cx="600" cy="400" r="180" fill="#f97415" opacity="0.15"/>
+            <path d="M420 500 L780 500 L780 440 L700 440 L660 380 L560 380 L560 500" fill="none" stroke="#ffffff" stroke-width="14"/>
+            <circle cx="500" cy="510" r="30" fill="#0b1528" stroke="#ffffff" stroke-width="10"/>
+            <circle cx="720" cy="510" r="30" fill="#0b1528" stroke="#ffffff" stroke-width="10"/>
+        </svg>
+    </template>
+</head>
+
+<body>
+
+    <!-- 1. Navbar -->
+    <div class="navbar-wrapper">
+        <nav class="navbar">
+            <a href="index.html" class="logo">MS Logistic<span>.</span></a>
+
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="tracking.html">Track Shipment</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><i
+                    class="ph-bold ph-list"></i></button>
+            <div class="mobile-nav" aria-hidden="true">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="tracking.html">Track Shipment</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-right">
+                <button class="theme-toggle" id="theme-toggle" title="Switch to dark mode">
+                    <i class="ph-bold ph-moon"></i>
+                </button>
+                <a href="contact.html" class="btn-quote">
+                    Get a Quote
+                    <div class="icon-circle"><i class="ph-bold ph-arrow-right"></i></div>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- 2. Hero Section -->
+    <section class="hero">
+        <img src="assets/hero_sunset.jpg" alt="Truck at sunset" class="hero-bg">
+        <div class="hero-overlay"></div>
+
+        <div class="container relative">
+            <div class="hero-content">
+
+                <h1 style="font-size: 66px">Moving Your Business Across Borders.</h1>
+                <p>Reliable international freight forwarding and logistics solutions — connecting your cargo to
+                    markets worldwide.</p>
+                <p style="font-size: 1rem; color: rgba(255,255,255,0.8); margin-top:-1.5rem;">From ocean and air
+                    freight to customs clearance, road transportation and warehousing, MS Logistic manages every
+                    critical step of your shipment with precision, transparency and care.</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary">
+                        Get a Quote <i class="ph ph-arrow-right"></i>
+                    </button>
+                    <div class="btn-video">
+                        <div class="play-icon"><i class="ph ph-map-pin"></i></div>
+                        Track Shipment
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2b. Intro / About (Clean 3-Card Design) -->
+    <section class="section fade-up" style="padding: 120px 0; background-color: var(--bg-surface);">
+        <div class="container">
+            <!-- Minimalist Section Header -->
+            <div style="text-align: center; max-width: 800px; margin: 0 auto 4rem;">
+                <div style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 1.5rem;">
+                    <div style="width: 30px; height: 2px; background: var(--accent-orange);"></div>
+                    <span
+                        style="color: var(--accent-orange); font-weight: 700; letter-spacing: 2px; font-size: 0.85rem; text-transform: uppercase;">ABOUT
+                        MS LOGISTIC</span>
+                    <div style="width: 30px; height: 2px; background: var(--accent-orange);"></div>
+                </div>
+
+                <h2
+                    style="font-size: 2.5rem; color: var(--text-heading); margin-bottom: 1.5rem; line-height: 1.2; font-weight: 600;">
+                    Logistics That Keeps Business Moving.
+                </h2>
+                <p
+                    style="color: var(--text-muted); font-size: 1.15rem; line-height: 1.7; max-width: 700px; margin: 0 auto;">
+                    MS Logistic is an international freight forwarding and logistics company. We coordinate the complete
+                    journey of your shipment — from origin pickup to final delivery.
+                </p>
+            </div>
+
+            <!-- 3 Cards in a line -->
+            <div class="grid-3" style="gap: 2rem;">
+
+                <!-- Card 1 -->
+                <div style="background: var(--bg-main); border: 1px solid var(--border-color); border-radius: 12px; padding: 48px 32px; text-align: center; transition: all 0.3s ease;"
+                    onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 10px 15px -3px rgba(0,0,0,0.05)';"
+                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                    <div
+                        style="width: 64px; height: 64px; background: var(--bg-surface); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+                        <i class="ph-fill ph-globe-hemisphere-west"
+                            style="font-size: 2rem; color: var(--accent-orange);"></i>
+                    </div>
+                    <h3 style="font-size: 1.5rem; color: var(--text-heading); margin-bottom: 1rem; font-weight: 700;">
+                        Global Network</h3>
+                    <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6;">Our international network
+                        enables efficient movement across major trade routes, connecting your cargo to markets
+                        worldwide.</p>
+                </div>
+
+                <!-- Card 2 (Highlight Card) -->
+                <div style="background: var(--bg-inverted); border-radius: 12px; padding: 48px 32px; text-align: center; transition: all 0.3s ease; position: relative; overflow: hidden; box-shadow: 0 10px 15px -3px rgba(11,21,40,0.15);"
+                    onmouseover="this.style.transform='translateY(-4px)';"
+                    onmouseout="this.style.transform='translateY(0)';">
+                    <!-- Decorative background elements for center card -->
+                    <div
+                        style="position: absolute; top: -30px; right: -30px; width: 150px; height: 150px; border-radius: 50%; border: 20px solid rgba(255,255,255,0.03);">
+                    </div>
+                    <div
+                        style="position: absolute; bottom: -30px; left: -30px; width: 100px; height: 100px; border-radius: 50%; border: 10px solid rgba(249,116,21,0.1);">
+                    </div>
+
+                    <div style="position: relative; z-index: 1;">
+                        <div
+                            style="width: 64px; height: 64px; background: rgba(249,116,21,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;">
+                            <i class="ph-fill ph-check-circle"
+                                style="font-size: 2rem; color: var(--accent-orange);"></i>
+                        </div>
+                        <h3 style="font-size: 1.5rem; color: white; margin-bottom: 1rem; font-weight: 700;">Reliable
+                            Operations</h3>
+                        <p style="color: #cbd5e1; font-size: 1rem; line-height: 1.6;">Every shipment is coordinated with
+                            strict attention to timelines, documentation, and specific cargo handling requirements.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div style="background: var(--bg-main); border: 1px solid var(--border-color); border-radius: 12px; padding: 48px 32px; text-align: center; transition: all 0.3s ease;"
+                    onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 10px 15px -3px rgba(0,0,0,0.05)';"
+                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                    <div
+                        style="width: 64px; height: 64px; background: var(--bg-surface); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+                        <i class="ph-fill ph-handshake" style="font-size: 2rem; color: var(--accent-orange);"></i>
+                    </div>
+                    <h3 style="font-size: 1.5rem; color: var(--text-heading); margin-bottom: 1rem; font-weight: 700;">
+                        Client-Focused</h3>
+                    <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6;">We build solutions designed
+                        around your specific business needs, providing transparency and dependability at every step.</p>
+                </div>
+
+            </div>
+
+            
+        </div>
+    </section>
+
+    <!-- 3. Trust / Credentials (Timeline Design) -->
+    <section class="section" style="background: var(--bg-surface); padding: 120px 0;">
+        <div class="container">
+            <!-- Header -->
+            <div class="section-header-left" style="margin-bottom: 5rem;">
+                <p style="font-size: 1.2rem; color: #475569; margin-bottom: 0.5rem;">Trust, Reliability and Scale</p>
+                <h2
+                    style="font-size: 2.5rem; color: var(--text-heading); margin-bottom: 0; position: relative; display: inline-block;">
+                    The Answer is MS Logistic
+                    <span
+                        style="position: absolute; left: 0; bottom: -8px; width: 80px; height: 3px; background: #f97415;"></span>
+                </h2>
+            </div>
+
+            <!-- Wavy Timeline Container -->
+            <div class="wavy-timeline-wrapper"
+                style="position: relative; width: 100%; height: 240px; margin-top: 3rem;">
+                <!-- Background SVG -->
+                <svg viewBox="0 0 1000 240" preserveAspectRatio="none"
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;">
+                    <path
+                        d="M 0,120 C 37.5,120 37.5,180 75,180 L 175,180 C 250,180 250,60 325,60 L 425,60 C 500,60 500,180 575,180 L 675,180 C 750,180 750,60 825,60 L 925,60 C 962.5,60 962.5,120 1000,120"
+                        fill="none" stroke="#cbd5e1" stroke-width="2" vector-effect="non-scaling-stroke" />
+                    <path d="M 90,180 L 160,180" stroke="#f97415" stroke-width="4" vector-effect="non-scaling-stroke" />
+                    <path d="M 340,60 L 410,60" stroke="#f97415" stroke-width="4" vector-effect="non-scaling-stroke" />
+                    <path d="M 590,180 L 660,180" stroke="#f97415" stroke-width="4"
+                        vector-effect="non-scaling-stroke" />
+                    <path d="M 840,60 L 910,60" stroke="#f97415" stroke-width="4" vector-effect="non-scaling-stroke" />
+
+                    <!-- Triangle markers at ends -->
+                    <polygon points="0,116 8,120 0,124" fill="#cbd5e1" />
+                    <polygon points="1000,116 992,120 1000,124" fill="#cbd5e1" />
+                </svg>
+
+                <!-- Nodes Container -->
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; z-index: 2;">
+                    <!-- Node 1 -->
+                    <div style="flex: 1; position: relative;">
+                        <div
+                            style="position: absolute; bottom: 75px; left: 50%; transform: translateX(-50%); text-align: center; width: 100%;">
+                            <div
+                                style="color: var(--text-main); font-size: 2rem; margin-bottom: 0.5rem; display: flex; justify-content: center;">
+                                <div style="position: relative;">
+                                    <i class="ph-fill ph-medal" style="color: #f97415;"></i>
+                                    <div
+                                        style="position: absolute; top: -2px; right: -6px; width: 12px; height: 12px; background: #1e293b; border-radius: 50%;">
+                                    </div>
+                                </div>
+                            </div>
+                            <h3
+                                style="font-size: 2rem; font-weight: 800; color: var(--text-heading); margin-bottom: 0.2rem;">
+                                15+</h3>
+                            <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.3;">
+                                Years<br>Experience</p>
+                        </div>
+                    </div>
+                    <!-- Node 2 -->
+                    <div style="flex: 1; position: relative;">
+                        <div
+                            style="position: absolute; top: 75px; left: 50%; transform: translateX(-50%); text-align: center; width: 100%;">
+                            <div
+                                style="color: var(--text-main); font-size: 2rem; margin-bottom: 0.5rem; display: flex; justify-content: center;">
+                                <div style="position: relative;">
+                                    <i class="ph-fill ph-globe-hemisphere-west" style="color: #f97415;"></i>
+                                    <i class="ph-fill ph-map-pin"
+                                        style="position: absolute; top: -5px; right: -8px; font-size: 1rem; color: var(--text-main);"></i>
+                                </div>
+                            </div>
+                            <h3
+                                style="font-size: 2rem; font-weight: 800; color: var(--text-heading); margin-bottom: 0.2rem;">
+                                150+</h3>
+                            <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.3;">
+                                Countries<br>Served</p>
+                        </div>
+                    </div>
+                    <!-- Node 3 -->
+                    <div style="flex: 1; position: relative;">
+                        <div
+                            style="position: absolute; bottom: 75px; left: 50%; transform: translateX(-50%); text-align: center; width: 100%;">
+                            <div
+                                style="color: var(--text-main); font-size: 2rem; margin-bottom: 0.5rem; display: flex; justify-content: center;">
+                                <div style="position: relative;">
+                                    <i class="ph-fill ph-package" style="color: #f97415;"></i>
+                                    <div
+                                        style="position: absolute; top: -2px; right: -6px; width: 12px; height: 12px; background: #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                        <i class="ph-bold ph-check" style="font-size: 8px; color: white;"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <h3
+                                style="font-size: 2rem; font-weight: 800; color: var(--text-heading); margin-bottom: 0.2rem;">
+                                10,000+</h3>
+                            <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.3;">
+                                Shipments<br>Handled</p>
+                        </div>
+                    </div>
+                    <!-- Node 4 -->
+                    <div style="flex: 1; position: relative;">
+                        <div
+                            style="position: absolute; top: 75px; left: 50%; transform: translateX(-50%); text-align: center; width: 100%;">
+                            <div
+                                style="color: var(--text-main); font-size: 2rem; margin-bottom: 0.5rem; display: flex; justify-content: center;">
+                                <div style="position: relative;">
+                                    <i class="ph-fill ph-users-three" style="color: #f97415;"></i>
+                                </div>
+                            </div>
+                            <h3
+                                style="font-size: 2rem; font-weight: 800; color: var(--text-heading); margin-bottom: 0.2rem;">
+                                500+</h3>
+                            <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.3;">
+                                Clients<br>Worldwide</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Services Section (Stacked Sticky Cards) -->
+    <section class="section" style="padding: 0; background: var(--bg-surface);">
+        <div class="services-stacked-section">
+
+            <!-- Left Column: Sticky Title Card -->
+            <div class="services-left-col">
+                <div class="sticky-title-card" id="services-sticky-card">
+                    <!-- Dynamic Background Images -->
+                    <div class="service-bg-img active"
+                        style="background-image: url('assets/srv_ocean_1787802085277.jpg');"></div>
+                    <div class="service-bg-img" style="background-image: url('assets/srv_air_1787802099035.jpg');">
+                    </div>
+                    <div class="service-bg-img"
+                        style="background-image: url('assets/hero_logistics_truck_1787799951828.jpg');"></div>
+                    <div class="service-bg-img" style="background-image: url('assets/ind_tech_1787801555640.jpg');">
+                    </div>
+                    <div class="service-bg-img"
+                        style="background-image: url('assets/modern_warehouse_1787799964731.jpg');"></div>
+                    <div class="service-bg-img" style="background-image: url('assets/ind_mfg_1787801541656.jpg');">
+                    </div>
+
+                    <!-- Dark Overlay -->
+                    <div
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(11,21,40,0.6), rgba(11,21,40,0.9)); z-index: 1;">
+                    </div>
+                    <div
+                        style="position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <div style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 2rem;">
+                                <div style="width: 30px; height: 2px; background: var(--accent-orange);"></div>
+                                <span
+                                    style="color: var(--accent-orange); font-weight: 700; letter-spacing: 2px; font-size: 0.85rem; text-transform: uppercase;">WHAT
+                                    WE DO</span>
+                            </div>
+                            <h2>Our<br>Services</h2>
+                        </div>
+                        <div style="width: 40px; height: 4px; background: var(--accent-orange);"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Stacking Cards -->
+            <div class="services-right-col">
+
+                <!-- Card 1 -->
+                <div class="stack-card odd" style="top: 120px; z-index: 1;" data-index="0">
+                    <div style="display: flex; align-items: flex-start; gap: 2rem; margin-bottom: 2rem;">
+                        <div class="card-number">01</div>
+                        <div class="card-content">
+                            <h3>Ocean Freight</h3>
+                            <p>Move your cargo efficiently across international trade routes with flexible FCL and LCL
+                                ocean freight solutions.</p>
+                        </div>
+                    </div>
+                    <div
+                        style="margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end;">
+                        <i class="ph-fill ph-boat"
+                            style="font-size: 3rem; color: var(--text-heading); opacity: 0.2;"></i>
+                        <a href="services.html" class="card-btn"><i class="ph-bold ph-arrow-right"
+                                style="font-size: 1.5rem;"></i></a>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="stack-card even" style="top: 140px; z-index: 2;" data-index="1">
+                    <div style="display: flex; align-items: flex-start; gap: 2rem; margin-bottom: 2rem;">
+                        <div class="card-number">02</div>
+                        <div class="card-content">
+                            <h3>Air Freight</h3>
+                            <p>Fast, dependable air freight solutions for urgent, time-sensitive and high-value
+                                shipments worldwide.</p>
+                        </div>
+                    </div>
+                    <div
+                        style="margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end;">
+                        <i class="ph-fill ph-airplane-tilt" style="font-size: 3rem; color: #ffffff; opacity: 0.2;"></i>
+                        <a href="services.html" class="card-btn"><i class="ph-bold ph-arrow-right"
+                                style="font-size: 1.5rem;"></i></a>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="stack-card odd" style="top: 160px; z-index: 3;" data-index="2">
+                    <div style="display: flex; align-items: flex-start; gap: 2rem; margin-bottom: 2rem;">
+                        <div class="card-number">03</div>
+                        <div class="card-content">
+                            <h3>Road Transport</h3>
+                            <p>Connect ports, airports, warehouses and final destinations through dependable road
+                                transportation solutions.</p>
+                        </div>
+                    </div>
+                    <div
+                        style="margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end;">
+                        <i class="ph-fill ph-truck"
+                            style="font-size: 3rem; color: var(--text-heading); opacity: 0.2;"></i>
+                        <a href="services.html" class="card-btn"><i class="ph-bold ph-arrow-right"
+                                style="font-size: 1.5rem;"></i></a>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="stack-card even" style="top: 180px; z-index: 4;" data-index="3">
+                    <div style="display: flex; align-items: flex-start; gap: 2rem; margin-bottom: 2rem;">
+                        <div class="card-number">04</div>
+                        <div class="card-content">
+                            <h3>Customs Clearance</h3>
+                            <p>Professional customs clearance support to help your import and export shipments move
+                                smoothly.</p>
+                        </div>
+                    </div>
+                    <div
+                        style="margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end;">
+                        <i class="ph-fill ph-file-text" style="font-size: 3rem; color: #ffffff; opacity: 0.2;"></i>
+                        <a href="services.html" class="card-btn"><i class="ph-bold ph-arrow-right"
+                                style="font-size: 1.5rem;"></i></a>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="stack-card odd" style="top: 200px; z-index: 5;" data-index="4">
+                    <div style="display: flex; align-items: flex-start; gap: 2rem; margin-bottom: 2rem;">
+                        <div class="card-number">05</div>
+                        <div class="card-content">
+                            <h3>Warehousing</h3>
+                            <p>Flexible warehousing solutions designed to keep your inventory secure, accessible and
+                                ready.</p>
+                        </div>
+                    </div>
+                    <div
+                        style="margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end;">
+                        <i class="ph-fill ph-warehouse"
+                            style="font-size: 3rem; color: var(--text-heading); opacity: 0.2;"></i>
+                        <a href="services.html" class="card-btn"><i class="ph-bold ph-arrow-right"
+                                style="font-size: 1.5rem;"></i></a>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="stack-card even" style="top: 220px; z-index: 6;" data-index="5">
+                    <div style="display: flex; align-items: flex-start; gap: 2rem; margin-bottom: 2rem;">
+                        <div class="card-number">06</div>
+                        <div class="card-content">
+                            <h3>Project Cargo</h3>
+                            <p>Our project cargo solutions are designed around the specific requirements of complex
+                                shipments.</p>
+                        </div>
+                    </div>
+                    <div
+                        style="margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end;">
+                        <i class="ph-fill ph-crane" style="font-size: 3rem; color: #ffffff; opacity: 0.2;"></i>
+                        <a href="services.html" class="card-btn"><i class="ph-bold ph-arrow-right"
+                                style="font-size: 1.5rem;"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Process Section (Wavy Timeline) -->
+    <section class="section fade-up" style="padding: 120px 0; background: var(--bg-surface);">
+        <div class="container">
+            <div class="header-centered" style="margin-bottom: 5rem;">
+                <div style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
+                    <div style="width: 30px; height: 2px; background: var(--accent-orange);"></div>
+                    <span
+                        style="color: var(--accent-orange); font-weight: 700; letter-spacing: 2px; font-size: 0.85rem; text-transform: uppercase;">HOW
+                        IT WORKS</span>
+                    <div style="width: 30px; height: 2px; background: var(--accent-orange);"></div>
+                </div>
+                <h2
+                    style="font-size: 2.5rem; color: var(--text-heading); margin-bottom: 1rem; line-height: 1.2; font-weight: 600;">
+                    From Origin to Destination.</h2>
+                <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 600px; margin: 0 auto;">We manage the
+                    movement of goods across every critical stage of the supply chain.</p>
+            </div>
+
+            <!-- Process Grid: Auto-Sliding Carousel -->
+            <div class="process-slider" style="margin-top: 4rem; overflow: hidden; position: relative;">
+                <div class="process-track" id="process-track" style="display: flex; gap: 2rem; width: max-content; animation: process-scroll 24s linear infinite;">
+
+                    <div class="process-slide" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 12px; padding: 48px 32px; position: relative;">
+                        <div style="position: absolute; top: 1rem; right: 1.5rem; font-size: 4rem; font-weight: 900; color: #f1f5f9; line-height: 1; z-index: 0; font-family: 'Inter', sans-serif;">01</div>
+                        <div style="position: relative; z-index: 1;">
+                            <i class="ph-fill ph-clipboard-text" style="font-size: 2.5rem; color: var(--accent-orange); margin-bottom: 1.5rem;"></i>
+                            <h4 style="font-size: 1.25rem; color: var(--text-heading); margin-bottom: 0.75rem; font-weight: 800;">Share Requirement</h4>
+                            <p style="font-size: 1rem; color: var(--text-muted); line-height: 1.65; margin: 0;">Tell us your origin, destination and timeline.</p>
+                        </div>
+                    </div>
+
+                    <div class="process-slide" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 12px; padding: 48px 32px; position: relative;">
+                        <div style="position: absolute; top: 1rem; right: 1.5rem; font-size: 4rem; font-weight: 900; color: #f1f5f9; line-height: 1; z-index: 0; font-family: 'Inter', sans-serif;">02</div>
+                        <div style="position: relative; z-index: 1;">
+                            <i class="ph-fill ph-map-trifold" style="font-size: 2.5rem; color: var(--accent-orange); margin-bottom: 1.5rem;"></i>
+                            <h4 style="font-size: 1.25rem; color: var(--text-heading); margin-bottom: 0.75rem; font-weight: 800;">Plan Shipment</h4>
+                            <p style="font-size: 1rem; color: var(--text-muted); line-height: 1.65; margin: 0;">We evaluate and recommend the best logistics solution.</p>
+                        </div>
+                    </div>
+
+                    <div class="process-slide" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 12px; padding: 48px 32px; position: relative;">
+                        <div style="position: absolute; top: 1rem; right: 1.5rem; font-size: 4rem; font-weight: 900; color: #f1f5f9; line-height: 1; z-index: 0; font-family: 'Inter', sans-serif;">03</div>
+                        <div style="position: relative; z-index: 1;">
+                            <i class="ph-fill ph-boat" style="font-size: 2.5rem; color: var(--accent-orange); margin-bottom: 1.5rem;"></i>
+                            <h4 style="font-size: 1.25rem; color: var(--text-heading); margin-bottom: 0.75rem; font-weight: 800;">Move &amp; Monitor</h4>
+                            <p style="font-size: 1rem; color: var(--text-muted); line-height: 1.65; margin: 0;">Coordinating transportation while keeping you informed.</p>
+                        </div>
+                    </div>
+
+                    <div class="process-slide" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 12px; padding: 48px 32px; position: relative;">
+                        <div style="position: absolute; top: 1rem; right: 1.5rem; font-size: 4rem; font-weight: 900; color: #f1f5f9; line-height: 1; z-index: 0; font-family: 'Inter', sans-serif;">04</div>
+                        <div style="position: relative; z-index: 1;">
+                            <i class="ph-fill ph-file-text" style="font-size: 2.5rem; color: var(--accent-orange); margin-bottom: 1.5rem;"></i>
+                            <h4 style="font-size: 1.25rem; color: var(--text-heading); margin-bottom: 0.75rem; font-weight: 800;">Clear &amp; Deliver</h4>
+                            <p style="font-size: 1rem; color: var(--text-muted); line-height: 1.65; margin: 0;">Customs clearance and onward transport to destination.</p>
+                        </div>
+                    </div>
+
+                    <div class="process-slide" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 12px; padding: 48px 32px; position: relative;">
+                        <div style="position: absolute; top: 1rem; right: 1.5rem; font-size: 4rem; font-weight: 900; color: #f1f5f9; line-height: 1; z-index: 0; font-family: 'Inter', sans-serif;">05</div>
+                        <div style="position: relative; z-index: 1;">
+                            <i class="ph-fill ph-flag-checkered" style="font-size: 2.5rem; color: var(--accent-orange); margin-bottom: 1.5rem;"></i>
+                            <h4 style="font-size: 1.25rem; color: var(--text-heading); margin-bottom: 0.75rem; font-weight: 800;">Complete</h4>
+                            <p style="font-size: 1rem; color: var(--text-muted); line-height: 1.65; margin: 0;">Safe delivery achieved with transparent communication.</p>
+                        </div>
+                    </div>
+
+                    <div class="process-slide" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 12px; padding: 48px 32px; position: relative;">
+                        <div style="position: absolute; top: 1rem; right: 1.5rem; font-size: 4rem; font-weight: 900; color: #f1f5f9; line-height: 1; z-index: 0; font-family: 'Inter', sans-serif;">01</div>
+                        <div style="position: relative; z-index: 1;">
+                            <i class="ph-fill ph-clipboard-text" style="font-size: 2.5rem; color: var(--accent-orange); margin-bottom: 1.5rem;"></i>
+                            <h4 style="font-size: 1.25rem; color: var(--text-heading); margin-bottom: 0.75rem; font-weight: 800;">Share Requirement</h4>
+                            <p style="font-size: 1rem; color: var(--text-muted); line-height: 1.65; margin: 0;">Tell us your origin, destination and timeline.</p>
+                        </div>
+                    </div>
+
+                    <div class="process-slide" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 12px; padding: 48px 32px; position: relative;">
+                        <div style="position: absolute; top: 1rem; right: 1.5rem; font-size: 4rem; font-weight: 900; color: #f1f5f9; line-height: 1; z-index: 0; font-family: 'Inter', sans-serif;">02</div>
+                        <div style="position: relative; z-index: 1;">
+                            <i class="ph-fill ph-map-trifold" style="font-size: 2.5rem; color: var(--accent-orange); margin-bottom: 1.5rem;"></i>
+                            <h4 style="font-size: 1.25rem; color: var(--text-heading); margin-bottom: 0.75rem; font-weight: 800;">Plan Shipment</h4>
+                            <p style="font-size: 1rem; color: var(--text-muted); line-height: 1.65; margin: 0;">We evaluate and recommend the best logistics solution.</p>
+                        </div>
+                    </div>
+
+                    <div class="process-slide" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 12px; padding: 48px 32px; position: relative;">
+                        <div style="position: absolute; top: 1rem; right: 1.5rem; font-size: 4rem; font-weight: 900; color: #f1f5f9; line-height: 1; z-index: 0; font-family: 'Inter', sans-serif;">03</div>
+                        <div style="position: relative; z-index: 1;">
+                            <i class="ph-fill ph-boat" style="font-size: 2.5rem; color: var(--accent-orange); margin-bottom: 1.5rem;"></i>
+                            <h4 style="font-size: 1.25rem; color: var(--text-heading); margin-bottom: 0.75rem; font-weight: 800;">Move &amp; Monitor</h4>
+                            <p style="font-size: 1rem; color: var(--text-muted); line-height: 1.65; margin: 0;">Coordinating transportation while keeping you informed.</p>
+                        </div>
+                    </div>
+
+                    <div class="process-slide" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 12px; padding: 48px 32px; position: relative;">
+                        <div style="position: absolute; top: 1rem; right: 1.5rem; font-size: 4rem; font-weight: 900; color: #f1f5f9; line-height: 1; z-index: 0; font-family: 'Inter', sans-serif;">04</div>
+                        <div style="position: relative; z-index: 1;">
+                            <i class="ph-fill ph-file-text" style="font-size: 2.5rem; color: var(--accent-orange); margin-bottom: 1.5rem;"></i>
+                            <h4 style="font-size: 1.25rem; color: var(--text-heading); margin-bottom: 0.75rem; font-weight: 800;">Clear &amp; Deliver</h4>
+                            <p style="font-size: 1rem; color: var(--text-muted); line-height: 1.65; margin: 0;">Customs clearance and onward transport to destination.</p>
+                        </div>
+                    </div>
+
+                    <div class="process-slide" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 12px; padding: 48px 32px; position: relative;">
+                        <div style="position: absolute; top: 1rem; right: 1.5rem; font-size: 4rem; font-weight: 900; color: #f1f5f9; line-height: 1; z-index: 0; font-family: 'Inter', sans-serif;">05</div>
+                        <div style="position: relative; z-index: 1;">
+                            <i class="ph-fill ph-flag-checkered" style="font-size: 2.5rem; color: var(--accent-orange); margin-bottom: 1.5rem;"></i>
+                            <h4 style="font-size: 1.25rem; color: var(--text-heading); margin-bottom: 0.75rem; font-weight: 800;">Complete</h4>
+                            <p style="font-size: 1rem; color: var(--text-muted); line-height: 1.65; margin: 0;">Safe delivery achieved with transparent communication.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Industries Section (Horizontal Accordion) -->
+    <section class="section section-light fade-up" id="industries">
+        <div class="container">
+            <div class="header-centered">
+                <div class="section-subtitle">INDUSTRIES</div>
+                <h2 style="font-weight: 600;">Logistics Built Around Your Business</h2>
+                <p style="max-width: 700px; margin: 0 auto;">Different industries have different cargo requirements. Our
+                    logistics solutions can be adapted to the needs of businesses across multiple sectors.</p>
+            </div>
+
+            <div class="accordion-gallery">
+                <div class="acc-item active" style="background-image: url('assets/ind_mfg_1787801541656.jpg');">
+                    <div class="acc-overlay"></div>
+                    <div class="acc-content">
+                        <h3>Manufacturing</h3>
+                        <p>Reliable movement of raw materials, components and finished goods.</p>
+                    </div>
+                </div>
+                <div class="acc-item" style="background-image: url('assets/ind_auto_1787801416271.jpg');">
+                    <div class="acc-overlay"></div>
+                    <div class="acc-content">
+                        <h3>Automotive</h3>
+                        <p>Coordinated transportation for automotive parts, equipment and industrial cargo.</p>
+                    </div>
+                </div>
+                <div class="acc-item" style="background-image: url('assets/ind_fmcg_1787801515151.jpg');">
+                    <div class="acc-overlay"></div>
+                    <div class="acc-content">
+                        <h3>Textiles & Apparel</h3>
+                        <p>Flexible freight solutions for time-sensitive and international textile shipments.</p>
+                    </div>
+                </div>
+                <div class="acc-item" style="background-image: url('assets/ind_pharma_1787801531751.jpg');">
+                    <div class="acc-overlay"></div>
+                    <div class="acc-content">
+                        <h3>Engineering</h3>
+                        <p>Specialized coordination for machinery, equipment and project cargo.</p>
+                    </div>
+                </div>
+                <div class="acc-item" style="background-image: url('assets/modern_warehouse_1787799964731.jpg');">
+                    <div class="acc-overlay"></div>
+                    <div class="acc-content">
+                        <h3>Retail & Trading</h3>
+                        <p>Import and export logistics designed around inventory and market demand.</p>
+                    </div>
+                </div>
+                <div class="acc-item" style="background-image: url('assets/ind_tech_1787801555640.jpg');">
+                    <div class="acc-overlay"></div>
+                    <div class="acc-content">
+                        <h3>General Cargo</h3>
+                        <p>Secure handling and time-sensitive delivery networks.</p>
+                    </div>
+                </div>
+                <div class="acc-item" style="background-image: url('assets/ind_ecom_1787801569427.jpg');">
+                    <div class="acc-overlay"></div>
+                    <div class="acc-content">
+                        <h3>E-commerce</h3>
+                        <p>Scalable fulfillment, distribution, and last-mile logistics.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Global Network Section -->
+    <section class="section"
+        style="position: relative; padding: 120px 0; background: url('assets/srv_air_1787802099035.jpg') center/cover fixed;">
+        <!-- Dark Overlay -->
+        <div
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(11,21,40,0.85), rgba(11,21,40,0.95)); z-index: 0;">
+        </div>
+
+        <div class="container" style="position: relative; z-index: 1;">
+            <div class="header-centered" style="margin-bottom: 5rem;">
+                <div style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
+                    <div style="width: 30px; height: 2px; background: var(--accent-orange);"></div>
+                    <span
+                        style="color: var(--accent-orange); font-weight: 700; letter-spacing: 2px; font-size: 0.85rem; text-transform: uppercase;">GLOBAL
+                        NETWORK</span>
+                    <div style="width: 30px; height: 2px; background: var(--accent-orange);"></div>
+                </div>
+                <h2 style="font-size: 2.5rem; color: #ffffff; margin-bottom: 1.5rem; line-height: 1.1; font-weight: 600;">
+                    Connecting India <br>to the World</h2>
+                <p
+                    style="color: var(--text-muted); font-size: 1.15rem; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                    From India to international markets, MS Logistic helps businesses move cargo across major global
+                    trade routes efficiently and securely.</p>
+            </div>
+
+            <!-- 4 Glass Cards -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+
+                <div style="background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 48px 32px; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);"
+                    onmouseover="this.style.transform='translateY(-4px)'; this.style.background='rgba(255, 255, 255, 0.08)';"
+                    onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(255, 255, 255, 0.03)';">
+                    <i class="ph-fill ph-globe-hemisphere-west"
+                        style="font-size: 3.5rem; color: var(--accent-orange); margin-bottom: 1.5rem; display: block;"></i>
+                    <h4 style="font-size: 1.5rem; color: #ffffff; margin-bottom: 1rem; font-weight: 700;">150+ Countries
+                    </h4>
+                    <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.65; margin: 0;">Our
+                        international network connects exporters and importers with destinations across key global
+                        markets.</p>
+                </div>
+
+                <div style="background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 48px 32px; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);"
+                    onmouseover="this.style.transform='translateY(-4px)'; this.style.background='rgba(255, 255, 255, 0.08)';"
+                    onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(255, 255, 255, 0.03)';">
+                    <i class="ph-fill ph-airplane-takeoff"
+                        style="font-size: 3.5rem; color: var(--accent-orange); margin-bottom: 1.5rem; display: block;"></i>
+                    <h4 style="font-size: 1.5rem; color: #ffffff; margin-bottom: 1rem; font-weight: 700;">India &rarr;
+                        Global</h4>
+                    <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.65; margin: 0;">Export cargo
+                        seamlessly from Indian origins to worldwide destinations with complete visibility.</p>
+                </div>
+
+                <div style="background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 48px 32px; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);"
+                    onmouseover="this.style.transform='translateY(-4px)'; this.style.background='rgba(255, 255, 255, 0.08)';"
+                    onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(255, 255, 255, 0.03)';">
+                    <i class="ph-fill ph-airplane-landing"
+                        style="font-size: 3.5rem; color: var(--accent-orange); margin-bottom: 1.5rem; display: block;"></i>
+                    <h4 style="font-size: 1.5rem; color: #ffffff; margin-bottom: 1rem; font-weight: 700;">Global &rarr;
+                        India</h4>
+                    <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.65; margin: 0;">Import cargo
+                        coordinated effortlessly from international origins straight into India.</p>
+                </div>
+
+                <div style="background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 48px 32px; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);"
+                    onmouseover="this.style.transform='translateY(-4px)'; this.style.background='rgba(255, 255, 255, 0.08)';"
+                    onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(255, 255, 255, 0.03)';">
+                    <i class="ph-fill ph-arrows-left-right"
+                        style="font-size: 3.5rem; color: var(--accent-orange); margin-bottom: 1.5rem; display: block;"></i>
+                    <h4 style="font-size: 1.5rem; color: #ffffff; margin-bottom: 1rem; font-weight: 700;">Cross-Border
+                    </h4>
+                    <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.65; margin: 0;">International
+                        shipment solutions meticulously designed around your unique supply chain requirements.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Why MS Logistic -->
+    <section class="section wbc-section" id="why-ms-logistic">
+        <div class="container">
+            <div class="wbc-layout">
+
+                <!-- LEFT: Heading + Tab List -->
+                <div class="wbc-left">
+                    <h2 class="wbc-heading">Why Businesses Choose<br>MS Logistic</h2>
+
+                    <nav class="wbc-tab-list" role="tablist">
+                        <button class="wbc-tab active" data-tab="wbc-1" role="tab" aria-selected="true">GLOBAL REACH</button>
+                        <button class="wbc-tab" data-tab="wbc-2" role="tab" aria-selected="false">EXPERIENCED PROFESSIONALS</button>
+                        <button class="wbc-tab" data-tab="wbc-3" role="tab" aria-selected="false">END-TO-END COORDINATION</button>
+                        <button class="wbc-tab" data-tab="wbc-4" role="tab" aria-selected="false">SHIPMENT VISIBILITY</button>
+                        <button class="wbc-tab" data-tab="wbc-5" role="tab" aria-selected="false">COMPETITIVE SOLUTIONS</button>
+                        <button class="wbc-tab" data-tab="wbc-6" role="tab" aria-selected="false">RESPONSIVE SUPPORT</button>
+                    </nav>
+                </div>
+
+                <!-- RIGHT: Content Panels -->
+                <div class="wbc-right">
+
+                    <!-- Panel 1 -->
+                    <div class="wbc-panel active" id="wbc-1" role="tabpanel">
+                        <h3 class="wbc-panel-title">GLOBAL REACH</h3>
+                        <p class="wbc-panel-desc">Connect your business to international markets through a network spanning 150+ countries. We handle ocean, air and road freight across key global trade routes.</p>
+                        <a href="services.html" class="wbc-panel-link">Explore Services <i class="ph-bold ph-arrow-up-right"></i></a>
+                        <div class="wbc-panel-img-wrap">
+                            <img src="assets/srv_ocean_1787802085277.jpg" alt="Global Reach" class="wbc-panel-img">
+                        </div>
+                    </div>
+
+                    <!-- Panel 2 -->
+                    <div class="wbc-panel" id="wbc-2" role="tabpanel">
+                        <h3 class="wbc-panel-title">EXPERIENCED PROFESSIONALS</h3>
+                        <p class="wbc-panel-desc">Our team brings practical knowledge of international freight forwarding, documentation and trade logistics built over 15+ years of industry experience.</p>
+                        <a href="about.html" class="wbc-panel-link">Learn About Us <i class="ph-bold ph-arrow-up-right"></i></a>
+                        <div class="wbc-panel-img-wrap">
+                            <img src="assets/experience.jpg" alt="Experienced Professionals" class="wbc-panel-img">
+                        </div>
+                    </div>
+
+                    <!-- Panel 3 -->
+                    <div class="wbc-panel" id="wbc-3" role="tabpanel">
+                        <h3 class="wbc-panel-title">END-TO-END COORDINATION</h3>
+                        <p class="wbc-panel-desc">Freight, customs, transportation and warehousing all coordinated through a single logistics partner — eliminating complexity from your supply chain.</p>
+                        <a href="services.html" class="wbc-panel-link">Explore Solutions <i class="ph-bold ph-arrow-up-right"></i></a>
+                        <div class="wbc-panel-img-wrap">
+                            <img src="assets/modern_warehouse_1787799964731.jpg" alt="End-to-End Coordination" class="wbc-panel-img">
+                        </div>
+                    </div>
+
+                    <!-- Panel 4 -->
+                    <div class="wbc-panel" id="wbc-4" role="tabpanel">
+                        <h3 class="wbc-panel-title">SHIPMENT VISIBILITY</h3>
+                        <p class="wbc-panel-desc">Stay informed at every stage with shipment tracking and timely communication throughout the logistics process — from origin to final delivery.</p>
+                        <a href="tracking.html" class="wbc-panel-link">Track Shipment <i class="ph-bold ph-arrow-up-right"></i></a>
+                        <div class="wbc-panel-img-wrap">
+                            <img src="assets/logistics_tech_1787799979723.jpg" alt="Shipment Visibility" class="wbc-panel-img">
+                        </div>
+                    </div>
+
+                    <!-- Panel 5 -->
+                    <div class="wbc-panel" id="wbc-5" role="tabpanel">
+                        <h3 class="wbc-panel-title">COMPETITIVE SOLUTIONS</h3>
+                        <p class="wbc-panel-desc">We help you identify efficient routing and transportation options that keep costs manageable without compromising on service quality or reliability.</p>
+                        <a href="contact.html" class="wbc-panel-link">Get a Quote <i class="ph-bold ph-arrow-up-right"></i></a>
+                        <div class="wbc-panel-img-wrap">
+                            <img src="assets/ind_tech_1787801555640.jpg" alt="Competitive Solutions" class="wbc-panel-img">
+                        </div>
+                    </div>
+
+                    <!-- Panel 6 -->
+                    <div class="wbc-panel" id="wbc-6" role="tabpanel">
+                        <h3 class="wbc-panel-title">RESPONSIVE SUPPORT</h3>
+                        <p class="wbc-panel-desc">Our team remains available to assist with shipment updates, documentation queries and logistics requirements — responsive, reliable and ready.</p>
+                        <a href="contact.html" class="wbc-panel-link">Contact Support <i class="ph-bold ph-arrow-up-right"></i></a>
+                        <div class="wbc-panel-img-wrap">
+                            <img src="assets/hero_sunset_truck_1787800241657.jpg" alt="Responsive Support" class="wbc-panel-img" style="width: 800px;">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 9. Forms & CTA -->
+    <section class="section fade-up" id="forms" style="position: relative; padding: 0; overflow: hidden; min-height: 620px; display: flex; align-items: center; justify-content: center; padding-top: 120px; padding-bottom: 120px;">
+        <img src="assets/hero_sunset_truck_1787800241657.jpg" alt="Move your cargo" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+        <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(11,21,40,0.55), rgba(11,21,40,0.15)); z-index: 1;"></div>
+
+        <div class="quote-card" style="position: relative; z-index: 2; background: #ffffff; width: min(1450px, 92%); margin: 0 auto; clip-path: polygon(6% 0, 100% 0, 100% 100%, 0 100%, 0 18%); padding: 64px 56px; display: grid; grid-template-columns: 1fr 1.3fr; gap: 48px;">
+            <div>
+                <div class="section-subtitle" style="color: var(--accent-orange); margin-bottom: 1rem;">GET A QUOTE</div>
+                <h2 style="font-size: 2.5rem; font-weight: 600; color: var(--text-heading); line-height: 1.2; margin-bottom: 1rem;">Ready to Move Your Business Forward?</h2>
+                <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.6;">Your cargo deserves more than a transport provider. Work with a logistics partner that understands your shipment, coordinates every critical stage and keeps your business moving.</p>
+            </div>
+
+            <form style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem 32px;" onsubmit="event.preventDefault(); window.location.href='contact.html';">
+                <div class="underline-field">
+                    <label>Origin*</label>
+                    <input type="text" placeholder="City or Pincode" required>
+                </div>
+                <div class="underline-field">
+                    <label>Destination*</label>
+                    <input type="text" placeholder="City or Pincode" required>
+                </div>
+                <div class="underline-field">
+                    <label>Cargo Type</label>
+                    <input type="text" placeholder="Type of Goods">
+                </div>
+                <div class="underline-field">
+                    <label>Shipment Mode</label>
+                    <input type="text" placeholder="Ocean / Air / Road">
+                </div>
+                <div class="underline-field" style="grid-column: 1 / -1;">
+                    <label>Message</label>
+                    <input type="text" placeholder="Tell us what you're shipping">
+                </div>
+                <div style="grid-column: 1 / -1; display: flex; justify-content: flex-end;">
+                    <button type="submit" class="btn-primary" style="border-radius: 6px;">Request a Quote</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="index.html" class="logo" style="color: var(--text-heading); margin-bottom: 1rem;">
+                        MS Logistic<span>.</span>
+                    </a>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">International Freight Forwarding &amp; Logistics</p>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 1rem;">MS Logistic provides professional freight forwarding and logistics solutions for businesses moving cargo across India and international markets.</p>
+                </div>
+
+                <div>
+                    <h4 style="color: var(--text-heading); margin-bottom: 1.5rem;">Our Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html">Ocean Freight</a></li>
+                        <li><a href="services.html">Air Freight</a></li>
+                        <li><a href="services.html">Road Transport</a></li>
+                        <li><a href="services.html">Customs Clearance</a></li>
+                        <li><a href="services.html">Warehousing</a></li>
+                        <li><a href="services.html">Project Cargo</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 style="color: var(--text-heading); margin-bottom: 1.5rem;">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="tracking.html">Track Shipment</a></li>
+                        <li><a href="contact.html">Get a Quote</a></li>
+                        <li><a href="resources.html#faq">FAQ</a></li>
+                        <li><a href="resources.html">Blog</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 style="color: var(--text-heading); margin-bottom: 1.5rem;">Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@mslogistic.in"><i class="ph ph-envelope-simple"></i> info@mslogistic.in</a></li>
+                        <li><a href="tel:+919876543210"><i class="ph ph-phone"></i> +91 98765 43210</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 MS Logistic. All rights reserved.</p>
+                <div class="social-icons" style="color: var(--text-muted);">
+                    <i class="ph-fill ph-facebook-logo"></i>
+                    <i class="ph-fill ph-twitter-logo"></i>
+                    <i class="ph-fill ph-linkedin-logo"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+
+</html>

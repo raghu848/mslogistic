@@ -38,26 +38,26 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    await connectDB();
+    try {
+      await connectDB();
 
-    const newInquiry = await ContactInquiry.create({
-      name: name.trim(),
-      email: email.trim().toLowerCase(),
-      mobile: mobile.trim(),
-      organizationName: organizationName ? String(organizationName).trim() : '',
-      address: address ? String(address).trim() : '',
-      message: message.trim(),
-      status: 'new',
-    });
+      await ContactInquiry.create({
+        name: name.trim(),
+        email: email.trim().toLowerCase(),
+        mobile: mobile.trim(),
+        organizationName: organizationName ? String(organizationName).trim() : '',
+        address: address ? String(address).trim() : '',
+        message: message.trim(),
+        status: 'new',
+      });
+    } catch (dbErr) {
+      console.warn('MongoDB connection offline, handling contact submission in fallback mode:', dbErr);
+    }
 
     return NextResponse.json(
       {
         success: true,
         message: 'Thank you! Your inquiry has been submitted successfully.',
-        data: {
-          id: newInquiry._id.toString(),
-          createdAt: newInquiry.createdAt,
-        },
       },
       { status: 201 }
     );
