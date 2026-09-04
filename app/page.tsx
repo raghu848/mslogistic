@@ -134,10 +134,6 @@ export default function HomePage() {
               <Link href="/contact" className="btn-primary">
                 Get a Quote <i className="ph ph-arrow-right"></i>
               </Link>
-              <Link href="/tracking" className="btn-video">
-                <div className="play-icon"><i className="ph ph-map-pin"></i></div>
-                Track Shipment
-              </Link>
             </div>
           </div>
         </div>
@@ -499,9 +495,6 @@ export default function HomePage() {
           <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="/contact" className="btn-primary" style={{ padding: '18px 36px', fontSize: '1.1rem' }}>
               Request a Freight Quote <i className="ph ph-arrow-right"></i>
-            </Link>
-            <Link href="/tracking" className="btn-outline-pill" style={{ padding: '14px 28px', fontSize: '1rem' }}>
-              Track Shipment Status
             </Link>
           </div>
         </div>

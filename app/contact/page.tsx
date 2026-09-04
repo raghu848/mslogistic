@@ -137,16 +137,6 @@ ${formData.message || 'Freight Quote Request'}
 
             <div style={{ marginBottom: '2rem' }}>
               <h4 style={{ color: 'var(--text-heading)', fontSize: '1.2rem', fontWeight: 700 }}>
-                <i className="ph-fill ph-phone" style={{ color: 'var(--accent-orange)', marginRight: '8px' }}></i> Phone
-              </h4>
-              <p style={{ color: 'var(--text-muted)', marginTop: '0.5rem', paddingLeft: '32px', lineHeight: 1.6 }}>
-                <a href="tel:+919056513656" style={{ color: 'inherit', textDecoration: 'none' }}>+91 90565 13656</a><br />
-                <a href="tel:+919876543210" style={{ color: 'inherit', textDecoration: 'none' }}>+91 98765 43210</a>
-              </p>
-            </div>
-
-            <div style={{ marginBottom: '2rem' }}>
-              <h4 style={{ color: 'var(--text-heading)', fontSize: '1.2rem', fontWeight: 700 }}>
                 <i className="ph-fill ph-envelope" style={{ color: 'var(--accent-orange)', marginRight: '8px' }}></i> Email
               </h4>
               <p style={{ color: 'var(--text-muted)', marginTop: '0.5rem', paddingLeft: '32px', lineHeight: 1.6 }}>

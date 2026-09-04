@@ -1,93 +1,154 @@
 import React from 'react';
 import Link from 'next/link';
 
+const SERVICES = [
+  'Ocean Freight',
+  'Air Freight',
+  'Road Transportation',
+  'Customs Clearance',
+  'Warehousing',
+  'Project Cargo',
+];
+
+const COMPANY = [
+  { label: 'Home', href: '/' },
+  { label: 'About Us', href: '/about' },
+  { label: 'Services', href: '/services' },
+  { label: 'FAQ', href: '/resources#faq' },
+  { label: 'Blog & Insights', href: '/resources#blog' },
+  { label: 'Contact Us', href: '/contact' },
+];
+
+// TODO: replace with the real MS Logistic profile URLs once they are available.
+const SOCIALS = [
+  { label: 'Facebook', icon: 'ph-facebook-logo' },
+  { label: 'X (Twitter)', icon: 'ph-x-logo' },
+  { label: 'LinkedIn', icon: 'ph-linkedin-logo' },
+];
+
 export default function Footer() {
   return (
-    <footer className="footer">
+    <footer className="site-footer">
+      {/* Conversion band that straddles the page and the footer */}
       <div className="container">
-        <div className="footer-grid">
-          <div>
-            <Link href="/" className="logo" style={{ marginBottom: '1rem', display: 'inline-block' }}>
-              <img src="/logo.png" alt="MS Logistic" style={{ height: '48px', width: 'auto', objectFit: 'contain' }} />
+        <div className="footer-cta">
+          <div className="footer-cta-copy">
+            <span className="footer-cta-eyebrow">
+              <i className="ph-fill ph-lightning" aria-hidden="true"></i>
+              Ready when you are
+            </span>
+            <h3>Let&rsquo;s move your cargo forward.</h3>
+            <p>Tell us your route and cargo type — we&rsquo;ll come back with a clear, competitive quote.</p>
+          </div>
+          <div className="footer-cta-actions">
+            <Link href="/contact" className="footer-cta-primary">
+              Get a Quote
+              <i className="ph-bold ph-arrow-up-right" aria-hidden="true"></i>
             </Link>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>
-              International Freight Forwarding & Logistics
-            </p>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginTop: '1rem', lineHeight: '1.6' }}>
-              MS Logistic provides professional freight forwarding and logistics solutions for businesses moving cargo across India and international markets.
-            </p>
-          </div>
-
-          <div>
-            <h4 style={{ color: 'var(--text-heading)', marginBottom: '1.5rem' }}>Our Services</h4>
-            <ul className="footer-links">
-              <li><Link href="/services">Ocean Freight</Link></li>
-              <li><Link href="/services">Air Freight</Link></li>
-              <li><Link href="/services">Road Transport</Link></li>
-              <li><Link href="/services">Customs Clearance</Link></li>
-              <li><Link href="/services">Warehousing</Link></li>
-              <li><Link href="/services">Project Cargo</Link></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 style={{ color: 'var(--text-heading)', marginBottom: '1.5rem' }}>Quick Links</h4>
-            <ul className="footer-links">
-              <li><Link href="/">Home</Link></li>
-              <li><Link href="/about">About Us</Link></li>
-              <li><Link href="/services">Services</Link></li>
-              <li><Link href="/tracking">Track Shipment</Link></li>
-              <li><Link href="/contact">Get a Quote</Link></li>
-              <li><Link href="/resources#faq">FAQ</Link></li>
-              <li><Link href="/resources#blog">Blog</Link></li>
-              <li><Link href="/contact">Contact Us</Link></li>
-              <li>
-                <Link href="/admin/login" style={{ color: 'var(--accent-orange)', fontWeight: 600 }}>
-                  Admin Portal →
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 style={{ color: 'var(--text-heading)', marginBottom: '1.5rem' }}>Contact</h4>
-            <ul className="footer-links">
-              <li style={{ marginBottom: '12px' }}>
-                <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', gap: '8px', alignItems: 'flex-start' }}>
-                  <i className="ph ph-map-pin" style={{ color: 'var(--accent-orange)', marginTop: '4px', flexShrink: 0 }}></i>
-                  <span>Ground Floor, 1783 K Street No. 2, 33 Feet Road, Harjap Nagar, Ludhiana, Punjab 141015</span>
-                </a>
-              </li>
-              <li style={{ marginBottom: '8px' }}>
-                <a href="mailto:info@mslogistic.org">
-                  <i className="ph ph-envelope-simple" style={{ color: 'var(--accent-orange)' }}></i> info@mslogistic.org
-                </a>
-              </li>
-              <li style={{ marginBottom: '8px' }}>
-                <a href="mailto:contact.mslogistic@gmail.com">
-                  <i className="ph ph-envelope-simple" style={{ color: 'var(--accent-orange)' }}></i> contact.mslogistic@gmail.com
-                </a>
-              </li>
-              <li style={{ marginBottom: '8px' }}>
-                <a href="tel:+919056513656">
-                  <i className="ph ph-phone" style={{ color: 'var(--accent-orange)' }}></i> +91 90565 13656
-                </a>
-              </li>
-              <li>
-                <a href="tel:+919876543210">
-                  <i className="ph ph-phone" style={{ color: 'var(--accent-orange)' }}></i> +91 98765 43210
-                </a>
-              </li>
-            </ul>
           </div>
         </div>
+      </div>
 
-        <div className="footer-bottom">
-          <p>© 2026 MS Logistic. All rights reserved.</p>
-          <div className="social-icons" style={{ color: 'var(--text-muted)' }}>
-            <i className="ph-fill ph-facebook-logo"></i>
-            <i className="ph-fill ph-twitter-logo"></i>
-            <i className="ph-fill ph-linkedin-logo"></i>
+      <div className="footer-body">
+        <div className="container">
+          <div className="footer-grid">
+            <div className="footer-brand">
+              <Link href="/" className="footer-logo" aria-label="MS Logistic — home">
+                <img src="/logo-dark.png" alt="MS Logistic" />
+              </Link>
+              <p className="footer-eyebrow">International Freight Forwarding &amp; Logistics</p>
+              <p className="footer-tagline">Moving possibilities, delivering trust.</p>
+              <p className="footer-about">
+                MS Logistic provides professional freight forwarding and logistics solutions for businesses moving cargo
+                across India and international markets.
+              </p>
+
+              <ul className="footer-social" aria-label="Social media">
+                {SOCIALS.map((s) => (
+                  <li key={s.label}>
+                    <span title={s.label} aria-label={s.label} role="img">
+                      <i className={`ph-fill ${s.icon}`} aria-hidden="true"></i>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="footer-col">
+              <h4>Our Services</h4>
+              <ul className="footer-links">
+                {SERVICES.map((label) => (
+                  <li key={label}>
+                    <Link href="/services">{label}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="footer-col">
+              <h4>Company</h4>
+              <ul className="footer-links">
+                {COMPANY.map((item) => (
+                  <li key={item.label}>
+                    <Link href={item.href}>{item.label}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="footer-col footer-contact">
+              <h4>Get in Touch</h4>
+
+              <a
+                className="footer-contact-item"
+                href="https://maps.google.com/?q=Harjap+Nagar+Ludhiana+Punjab+141015"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="footer-contact-icon">
+                  <i className="ph ph-map-pin" aria-hidden="true"></i>
+                </span>
+                <span>
+                  <strong>Head Office</strong>
+                  Ground Floor, 1783 K Street No.&nbsp;2, 33 Feet Road, Harjap Nagar, Ludhiana, Punjab 141015
+                </span>
+              </a>
+
+              <a className="footer-contact-item" href="mailto:info@mslogistic.org">
+                <span className="footer-contact-icon">
+                  <i className="ph ph-envelope-simple" aria-hidden="true"></i>
+                </span>
+                <span>
+                  <strong>General enquiries</strong>
+                  info@mslogistic.org
+                </span>
+              </a>
+
+              <a className="footer-contact-item" href="mailto:contact.mslogistic@gmail.com">
+                <span className="footer-contact-icon">
+                  <i className="ph ph-paper-plane-tilt" aria-hidden="true"></i>
+                </span>
+                <span>
+                  <strong>Quotes &amp; bookings</strong>
+                  contact.mslogistic@gmail.com
+                </span>
+              </a>
+
+              <Link href="/admin/login" className="footer-admin">
+                <i className="ph ph-lock-simple" aria-hidden="true"></i>
+                Admin Portal
+                <i className="ph-bold ph-arrow-right" aria-hidden="true"></i>
+              </Link>
+            </div>
+          </div>
+
+          <div className="footer-bottom">
+            <p>© {new Date().getFullYear()} MS Logistic. All rights reserved.</p>
+            <ul className="footer-legal">
+              <li><Link href="/resources#faq">FAQ</Link></li>
+              <li><Link href="/contact">Support</Link></li>
+              <li><Link href="/about">About</Link></li>
+            </ul>
           </div>
         </div>
       </div>
