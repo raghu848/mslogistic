@@ -140,8 +140,8 @@ ${formData.message || 'Freight Quote Request'}
                 <i className="ph-fill ph-envelope" style={{ color: 'var(--accent-orange)', marginRight: '8px' }}></i> Email
               </h4>
               <p style={{ color: 'var(--text-muted)', marginTop: '0.5rem', paddingLeft: '32px', lineHeight: 1.6 }}>
-                <a href="mailto:info@mslogistic.org" style={{ color: 'inherit', textDecoration: 'none' }}>info@mslogistic.org</a><br />
-                <a href="mailto:contact.mslogistic@gmail.com" style={{ color: 'inherit', textDecoration: 'none' }}>contact.mslogistic@gmail.com</a>
+                <a href="mailto:sales@mslogistic.org" style={{ color: 'inherit', textDecoration: 'none' }}>sales@mslogistic.org</a><br />
+                <a href="mailto:info@mslogistic.org" style={{ color: 'inherit', textDecoration: 'none' }}>info@mslogistic.org</a>
               </p>
             </div>
           </div>

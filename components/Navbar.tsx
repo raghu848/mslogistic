@@ -119,9 +119,9 @@ export default function Navbar() {
         <div className="header-utility">
           <div className="header-utility-inner">
             <div className="utility-group">
-              <a className="utility-item" href="mailto:info@mslogistic.org">
+              <a className="utility-item" href="mailto:sales@mslogistic.org">
                 <i className="ph ph-envelope-simple" aria-hidden="true"></i>
-                <span>info@mslogistic.org</span>
+                <span>sales@mslogistic.org</span>
               </a>
               <span className="utility-sep" aria-hidden="true"></span>
               <span className="utility-item utility-item-static">
@@ -306,9 +306,9 @@ export default function Navbar() {
             Get a Quote
             <i className="ph-bold ph-arrow-up-right" aria-hidden="true"></i>
           </Link>
-          <a className="drawer-contact" href="mailto:info@mslogistic.org">
+          <a className="drawer-contact" href="mailto:sales@mslogistic.org">
             <i className="ph ph-envelope-simple" aria-hidden="true"></i>
-            info@mslogistic.org
+            sales@mslogistic.org
           </a>
           <p className="drawer-address">
             <i className="ph ph-map-pin" aria-hidden="true"></i>

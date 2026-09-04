@@ -114,23 +114,23 @@ export default function Footer() {
                 </span>
               </a>
 
-              <a className="footer-contact-item" href="mailto:info@mslogistic.org">
+              <a className="footer-contact-item" href="mailto:sales@mslogistic.org">
                 <span className="footer-contact-icon">
                   <i className="ph ph-envelope-simple" aria-hidden="true"></i>
                 </span>
                 <span>
-                  <strong>General enquiries</strong>
-                  info@mslogistic.org
+                  <strong>Sales &amp; Freight Enquiries</strong>
+                  sales@mslogistic.org
                 </span>
               </a>
 
-              <a className="footer-contact-item" href="mailto:contact.mslogistic@gmail.com">
+              <a className="footer-contact-item" href="mailto:info@mslogistic.org">
                 <span className="footer-contact-icon">
-                  <i className="ph ph-paper-plane-tilt" aria-hidden="true"></i>
+                  <i className="ph ph-envelope-open" aria-hidden="true"></i>
                 </span>
                 <span>
-                  <strong>Quotes &amp; bookings</strong>
-                  contact.mslogistic@gmail.com
+                  <strong>General enquiries</strong>
+                  info@mslogistic.org
                 </span>
               </a>
 
